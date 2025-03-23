@@ -16,7 +16,7 @@ const socials = [
   },
   {
     icon: faLinkedin,
-    url: "https://www.linkedin.com/in/tomycesped",
+    url: "https://www.linkedin.com/in/tomcesped",
   },
   {
     icon: faInstagram,

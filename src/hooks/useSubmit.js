@@ -7,7 +7,7 @@ const useSubmit = () => {
   const submit = async (url, data) => {
     setLoading(true);
     try {
-      const res = await fetch(url, {
+      const res = await fetch("https://portfolio-back-xi.vercel.app/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

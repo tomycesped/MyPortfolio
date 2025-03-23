@@ -70,7 +70,7 @@ const ContactMeSection = () => {
         .required("Required"),
     }),
     onSubmit: async (values, { resetForm }) => {
-      const url = "http://localhost:5000/api/submit";
+      const url = "/api/submit";
       const result = await submit(url, values);
       if (result.type === "success") {
         onOpen("success", result.message);
