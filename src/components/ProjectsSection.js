@@ -100,7 +100,7 @@ const ProjectsSection = () => {
         fontSize={headingSize} 
       >
         See more projects on my{" "}
-        <a 
+        <a target="_blank" rel="noopener noreferrer"
           style={{ color: "black", textDecoration: "underline" }} 
           href="https://www.github.com/tomycesped"
         >

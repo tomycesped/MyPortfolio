@@ -5,7 +5,6 @@ import {
   faGithub,
   faInstagram,
   faLinkedin,
-  faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack, useBreakpointValue } from "@chakra-ui/react";
 
@@ -29,7 +28,7 @@ const Header = () => {
   const prevScrollY = useRef(0);
 
   const paddingX = useBreakpointValue({ 
-    base: 4, 
+    base: 3, 
     sm: 8,  
     md: 12, 
     lg: 16,  
@@ -108,7 +107,7 @@ const Header = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ marginRight: index < socials.length - 1 ? "16px" : "0" }} 
+                style={{ marginRight: index < socials.length - 1 ? "10px" : "0" }} 
               >
                 <FontAwesomeIcon icon={social.icon} size={iconSize} />
               </a>
@@ -116,9 +115,9 @@ const Header = () => {
           </nav>
           <nav>
             <HStack spacing={linkSpacing} style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <a onClick={handleClick("projects")} href="/#projects">
-                Projects
-              </a>
+            <a onClick={handleClick("projects")} href="/#projects" style={{ whiteSpace: "pre-line", textAlign:"center" }}>
+             Projects{"\n"}& Certificates
+            </a>
               <a onClick={handleClick("contactme")} href="/#contact-me">
                 Contact me
               </a>
