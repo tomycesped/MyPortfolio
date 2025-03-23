@@ -34,10 +34,10 @@ const LandingSection = () => {
         alt="me"
         onClick={handleImageClick} 
       />
-      <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "18px" }}>
+      <h1 onClick={handleImageClick} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "18px", cursor: "pointer" }}>
         Hello, I am Thomas!
       </h1>
-      <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "30px", textAlign: "center",
+      <h1 onClick={handleImageClick} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "30px", textAlign: "center", cursor: "pointer",
     margin: "0"}}>
         A frontend developer specialized in React ⚛️
       </h1>

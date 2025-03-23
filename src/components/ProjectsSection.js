@@ -72,7 +72,7 @@ const ProjectsSection = () => {
       <Heading 
         as="h1" 
         id="projects-section" 
-        style={{ fontFamily: "'Outfit', sans-serif" }}
+        style={{ fontFamily: "'Outfit', sans-serif", cursor:"default" }}
         fontSize={headingSize} 
       >
         Featured Projects
@@ -96,7 +96,7 @@ const ProjectsSection = () => {
       <Heading 
         as="h1" 
         id="projects-section" 
-        style={{ fontFamily: "'Outfit', sans-serif" }}
+        style={{ fontFamily: "'Outfit', sans-serif", cursor:"default" }}
         fontSize={headingSize} 
       >
         See more projects on my{" "}

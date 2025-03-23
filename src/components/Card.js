@@ -13,7 +13,7 @@ const Card = ({ title, description, imageSrc, link }) => {
       align="start"
       p={4}
       bg="white"
-      style={{ fontFamily: "'Outfit', sans-serif"}}
+      style={{ fontFamily: "'Outfit', sans-serif", cursor:"default"}}
     >
       <Image src={imageSrc} alt={title} borderRadius="md" />
       <Heading size="md" color="blackAlpha.900" style={{ fontFamily: "'Outfit', sans-serif"}}>{title}</Heading>

@@ -91,7 +91,7 @@ const ContactMeSection = () => {
         alignItems="flex-start"
       >
         <Heading 
-          style={{ fontFamily: "'Outfit', sans-serif"}} 
+          style={{ fontFamily: "'Outfit', sans-serif", cursor:"default"}} 
           as="h1" 
           id="contactme-section"
           fontSize={{ base: "xl", sm: "2xl", md: "3xl", lg: "4xl" }}
@@ -106,7 +106,7 @@ const ContactMeSection = () => {
         >
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4} width="100%">
-              <FormControl isInvalid={formik.touched.firstName && formik.errors.firstName} width="100%">
+              <FormControl style={{ cursor:"default" }} isInvalid={formik.touched.firstName && formik.errors.firstName} width="100%">
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
                   backgroundColor="#8B5E3C"
@@ -119,7 +119,7 @@ const ContactMeSection = () => {
                 />
                 <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
-              <FormControl isInvalid={formik.touched.email && formik.errors.email} width="100%">
+              <FormControl style={{ cursor:"default" }} isInvalid={formik.touched.email && formik.errors.email} width="100%">
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <Input
                   backgroundColor="#8B5E3C"
@@ -133,7 +133,7 @@ const ContactMeSection = () => {
                 />
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
-              <FormControl width="100%">
+              <FormControl style={{ cursor:"default" }} width="100%">
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select
                   backgroundColor="#8B5E3C"
@@ -149,7 +149,7 @@ const ContactMeSection = () => {
                   <option value="other">Other</option>
                 </Select>
               </FormControl>
-              <FormControl isInvalid={formik.touched.comment && formik.errors.comment} width="100%">
+              <FormControl style={{ cursor:"default" }} isInvalid={formik.touched.comment && formik.errors.comment} width="100%">
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
                   id="comment"
@@ -165,7 +165,7 @@ const ContactMeSection = () => {
               </FormControl>
               <Button 
                 type="submit" 
-                backgroundColor="#8B5E3C" 
+                backgroundColor="white" 
                 width={buttonWidth} 
                 isLoading={isLoading}
                 size={{ base: "md", md: "lg" }}

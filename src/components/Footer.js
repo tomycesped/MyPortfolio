@@ -24,7 +24,7 @@ const Footer = () => {
           alignItems="center"
           maxWidth="1024px"
           height={16}
-        ><p>made by</p>&nbsp;
+        ><p style={{ cursor:"default" }}>made by&nbsp;</p>
           <p
             style={{
               transform: isClicked ? "scale(1.1) translateY(-5px)" : "scale(1) translateY(0)",
@@ -34,7 +34,7 @@ const Footer = () => {
             onClick={handleTextClick}
           >
             tomcesped
-          </p>&nbsp;<p>• © 2025</p>
+          </p><p style={{ cursor:"default" }}>&nbsp;• © 2025</p>
         </Flex>
       </footer>
     </Box>
