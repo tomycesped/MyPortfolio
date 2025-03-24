@@ -27,7 +27,7 @@ const certificates = [
     title: "C2 English",
     description:
       "C2 Proficient English certification, showcasing advanced skills in fluent communication, complex writing, and deep understanding of formal and informal language.",
-    issuedBy: "Frontend Masters",
+    issuedBy: "EF Standard English Test",
     date: "May 2024",
     link: "https://cert.efset.org/BA4a6T",
     logo: "https://upload.wikimedia.org/wikipedia/commons/3/3a/EF_Education_First_Logo.png",
