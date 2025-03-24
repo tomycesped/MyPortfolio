@@ -96,12 +96,12 @@ const ProjectsSection = () => {
       <Heading 
         as="h1" 
         id="projects-section" 
-        style={{ fontFamily: "'Outfit', sans-serif", cursor:"default" }}
+        style={{ fontFamily: "'Outfit', sans-serif", cursor:"default"}}
         fontSize={headingSize} 
       >
         See more projects on my{" "}
         <a target="_blank" rel="noopener noreferrer"
-          style={{ color: "black", textDecoration: "underline" }} 
+          style={{ color: "black", textDecoration: "underline"}} 
           href="https://www.github.com/tomycesped"
         >
           GitHub
