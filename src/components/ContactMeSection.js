@@ -167,11 +167,13 @@ const ContactMeSection = () => {
               </FormControl>
               <Button 
                 type="submit" 
-                backgroundColor="white" 
+                backgroundColor="#0D0D0D" 
                 width={buttonWidth} 
                 isLoading={isLoading}
                 size={{ base: "md", md: "lg" }}
                 mt={2}
+                color="white"
+                _hover={{ bg: "blackAlpha.900" }}
               >
                 Submit
               </Button>

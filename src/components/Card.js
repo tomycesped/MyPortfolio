@@ -15,7 +15,7 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
       bg="black"
       style={{ fontFamily: "'Outfit', sans-serif", cursor: "default" }}
       w="100%"
-      minHeight="350px"  // Ajusta el tamaño mínimo de la tarjeta
+      minHeight="350px"
       display="flex"
       flexDirection="column"
     >
@@ -24,14 +24,12 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
         {title}
       </Heading>
       <Text color="gray.300">{description}</Text>
-
-      {/* Flex container to push buttons to the bottom */}
       <Flex
         w="100%"
         justifyContent="center"
         direction="column"
         gap={2}
-        flexGrow={1} // This ensures the buttons take up available space and stay at the bottom
+        flexGrow={1} 
       >
         <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
           <Button
@@ -39,6 +37,7 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
             color="white"
             rightIcon={<FontAwesomeIcon icon={faCodeBranch} />}
             w="100%"
+            _hover={{ bg: "gray.700" }}
           >
             Check Repository
           </Button>
@@ -49,6 +48,7 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
             color="white"
             rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
             w="100%"
+            _hover={{ bg: "gray.700" }}
           >
             Visit Website
           </Button>

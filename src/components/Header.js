@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack, useBreakpointValue } from "@chakra-ui/react";
+import { faEnvelope, faHandshake, faIdBadge, faInbox } from "@fortawesome/free-solid-svg-icons";
 
 const socials = [
   {
@@ -83,8 +84,9 @@ const Header = () => {
           </nav>
           <nav>
             <HStack spacing={linkSpacing} style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <a onClick={handleClick("contactme")} href="/#contact-me">
+              <a onClick={handleClick("contactme")} href="/#contact-me" alignItems="center">
                 Contact me
+                <FontAwesomeIcon icon={faEnvelope} size="md" style={{ marginLeft: "7px" }} />
               </a>
             </HStack>
           </nav>

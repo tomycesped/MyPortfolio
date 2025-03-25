@@ -3,7 +3,7 @@ import FullScreenSection from "./FullScreenSection";
 import tom from "../images/tom.jpeg";
 import { Box, Image, Text, VStack, Flex, Button, HStack } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileDownload, faProjectDiagram, faCertificate } from "@fortawesome/free-solid-svg-icons";
+import { faFileDownload, faProjectDiagram, faCertificate, faAward, faAtom } from "@fortawesome/free-solid-svg-icons";
 
 const LandingSection = () => {
   const handleClick = (anchor) => () => {
@@ -60,7 +60,8 @@ const LandingSection = () => {
             margin="0"
             fontWeight="bold"
           >
-            A frontend developer{"\n"}specialized in React
+            A frontend developer{"\n"}specialized in React&nbsp;
+            <FontAwesomeIcon icon={faAtom} />
           </Text>
           <HStack spacing={3} flexWrap="wrap" justify={{ base: "center", md: "start" }}>
             <Button
@@ -91,7 +92,7 @@ const LandingSection = () => {
               as="a"
               onClick={handleClick("certificates")} 
               href="/#certificates"
-              leftIcon={<FontAwesomeIcon icon={faCertificate} />}
+              leftIcon={<FontAwesomeIcon icon={faAward} />}
               bg="#0D0D0D"
               color="white"
               _hover={{ bg: "#1C1C1C" }}
