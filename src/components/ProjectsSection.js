@@ -12,6 +12,7 @@ const projects = [
       "Lazy Foxes is an app where you can add fox photos that load progressively with Lazy Loading, providing a fast and smooth experience.",
     getImageSrc: () => require("../images/foxes.png"),
     link: "https://lazyfoxes.vercel.app/",
+    repoLink:"https://github.com/tomycesped/Foxes"
   },
   {
     title: "TO-DO List 📝",
@@ -19,6 +20,7 @@ const projects = [
       "TO-DO List is an app that stores your tasks using local storage. It features custom hooks for a smooth, efficient user experience, allowing you to manage and track your tasks effortlessly.",
     getImageSrc: () => require("../images/todo.png"),
     link: "https://tomycesped.github.io/TodoList/",
+    repoLink:"https://github.com/tomycesped/TodoList"
   },
   {
     title: "Async Landing Page ⭐️",
@@ -26,6 +28,7 @@ const projects = [
       "Async Landing Page is a fan-driven site showcasing the latest videos of Ethel Cain using the YouTube API. With asynchronous loading, the page dynamically fetches and displays her newest content for an engaging, real-time experience.",
     getImageSrc: () => require("../images/ethel.png"),
     link: "https://tomycesped.github.io/async-landing/",
+    repoLink:"https://github.com/tomycesped/async-landing"
   },
   {
     title: "Shopi (desktop only) 🛒",
@@ -33,6 +36,7 @@ const projects = [
       "Shopi is a virtual store app where I explored the potential of frontend development and implemented various features using TailWindCSS. This project reflects my journey in creating a functional and visually appealing online experience.",
     getImageSrc: () => require("../images/shopi.png"),
     link: "https://tomycesped.github.io/Shopi/",
+    repoLink: "https://github.com/tomycesped/Shopi"
   },
 ];
 
@@ -90,6 +94,7 @@ const ProjectsSection = () => {
             description={project.description}
             imageSrc={project.getImageSrc()}
             link={project.link}
+            repoLink={project.repoLink}
           />
         ))}
       </Box>
