@@ -74,8 +74,8 @@ const ProjectsSection = () => {
       spacing={8}
     >
       <Heading 
-        as="h1" 
-        id="projects-section" 
+        id="projects-section"
+        as="h1"     
         style={{ fontFamily: "'Outfit', sans-serif", cursor:"default" }}
         fontSize={headingSize} 
         color="black"

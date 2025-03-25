@@ -1,18 +1,22 @@
 import React from "react";
 import FullScreenSection from "./FullScreenSection";
-import tom from "../images/tom.jpeg";
-import { Box, Image, Text, VStack, Flex, Button, HStack } from "@chakra-ui/react";
+import tom from "../images/tomi.jpg";
+import { Image, Text, VStack, Flex, Button, HStack } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileDownload, faProjectDiagram, faCertificate, faAward, faAtom } from "@fortawesome/free-solid-svg-icons";
+import { faFileDownload, faProjectDiagram, faAward, faAtom } from "@fortawesome/free-solid-svg-icons";
 
 const LandingSection = () => {
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+      const headerHeight = 72; 
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
       });
     }
   };
@@ -104,6 +108,7 @@ const LandingSection = () => {
         </VStack>
       </Flex>
     </FullScreenSection>
+
   );
 };
 
