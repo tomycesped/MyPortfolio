@@ -84,9 +84,9 @@ const Header = () => {
           </nav>
           <nav>
             <HStack spacing={linkSpacing} style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <a onClick={handleClick("contactme")} href="/#contact-me" alignItems="center">
+              <a onClick={handleClick("contactme")} href="/#contact-me">
                 Contact me
-                <FontAwesomeIcon icon={faEnvelope} size="md" style={{ marginLeft: "7px" }} />
+                <FontAwesomeIcon icon={faEnvelope} size="md" style={{ marginLeft: "7px", verticalAlign: "-13%"}} />
               </a>
             </HStack>
           </nav>
