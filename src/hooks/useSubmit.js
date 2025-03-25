@@ -18,7 +18,7 @@ const useSubmit = () => {
       return result;
     } catch (error) {
       console.error("Error in request:", error);
-      const errorResponse = { type: "error", message: "Something went wrong, please try again later!" };
+      const errorResponse = { type: "error", message: "Oh no, something went wrong. Please try again later" };
       setResponse(errorResponse);
       return errorResponse;
     } finally {
