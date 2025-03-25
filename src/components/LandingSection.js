@@ -70,8 +70,8 @@ const LandingSection = () => {
           <HStack spacing={3} flexWrap="wrap" justify={{ base: "center", md: "start" }}>
             <Button
               as="a"
-              href="/CVENGUPDATED.pdf"
-              download="Tomcesped_CV.pdf"
+              href="/TOM_CVENG.pdf"
+              download="Thomas_CV.pdf"
               leftIcon={<FontAwesomeIcon icon={faFileDownload} />}
               bg="#0D0D0D"
               color="white"
