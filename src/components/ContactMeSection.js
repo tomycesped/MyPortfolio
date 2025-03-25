@@ -82,7 +82,7 @@ const ContactMeSection = () => {
   });
 
   return (
-    <FullScreenSection isDarkBackground backgroundColor="#3B2418" spacing={8} justifyContent="center"
+    <FullScreenSection isDarkBackground backgroundColor="#D1D1D1" spacing={8} justifyContent="center"
     alignItems="center">
       <VStack 
         w={containerWidth}
@@ -95,6 +95,7 @@ const ContactMeSection = () => {
           as="h1" 
           id="contactme-section"
           fontSize={{ base: "xl", sm: "2xl", md: "3xl", lg: "4xl" }}
+          color="black"
         >
           Contact me
         </Heading>
@@ -103,13 +104,14 @@ const ContactMeSection = () => {
           rounded="md" 
           w="100%" 
           style={{ fontFamily: "'Outfit', sans-serif"}}
+          color="black"
         >
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4} width="100%">
               <FormControl style={{ cursor:"default" }} isInvalid={formik.touched.firstName && formik.errors.firstName} width="100%">
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
-                  backgroundColor="#8B5E3C"
+                  backgroundColor="#F6F6F6"
                   id="firstName"
                   name="firstName"
                   {...formik.getFieldProps("firstName")}
@@ -122,7 +124,7 @@ const ContactMeSection = () => {
               <FormControl style={{ cursor:"default" }} isInvalid={formik.touched.email && formik.errors.email} width="100%">
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <Input
-                  backgroundColor="#8B5E3C"
+                  backgroundColor="#F6F6F6"
                   id="email"
                   name="email"
                   type="email"
@@ -136,7 +138,7 @@ const ContactMeSection = () => {
               <FormControl style={{ cursor:"default" }} width="100%">
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select
-                  backgroundColor="#8B5E3C"
+                  backgroundColor="#F6F6F6"
                   id="type"
                   name="type"
                   {...formik.getFieldProps("type")}
@@ -154,7 +156,7 @@ const ContactMeSection = () => {
                 <Textarea
                   id="comment"
                   name="comment"
-                  backgroundColor="#8B5E3C"
+                  backgroundColor="#F6F6F6"
                   {...formik.getFieldProps("comment")}
                   focusBorderColor="white"
                   size={{ base: "md", md: "lg" }}

@@ -20,7 +20,7 @@ const socials = [
 
 const Header = () => {
   const paddingX = useBreakpointValue({ 
-    base: 3, 
+    base: 4, 
     sm: 6,  
     md: 8, 
     lg: 12,  
@@ -57,7 +57,7 @@ const Header = () => {
       top={0}
       left={0}
       right={0}
-      backgroundColor="#2A1B14"
+      backgroundColor="#0D0D0D"
       zIndex={1}
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
@@ -75,7 +75,7 @@ const Header = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ marginRight: index < socials.length - 1 ? "8px" : "0" }} 
+                style={{ marginRight: index < socials.length - 1 ? "10px" : "0" }} 
               >
                 <FontAwesomeIcon icon={social.icon} size={iconSize} />
               </a>
@@ -83,9 +83,6 @@ const Header = () => {
           </nav>
           <nav>
             <HStack spacing={linkSpacing} style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <a onClick={handleClick("projects")} href="/#projects" style={{ whiteSpace: "pre-line", textAlign: "center" }}>
-                Projects{"\n"}& Certificates
-              </a>
               <a onClick={handleClick("contactme")} href="/#contact-me">
                 Contact me
               </a>

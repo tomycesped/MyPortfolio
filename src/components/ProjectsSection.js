@@ -67,7 +67,7 @@ const ProjectsSection = () => {
 
   return (
     <FullScreenSection
-      backgroundColor="#A57C5B"
+      backgroundColor="#E4E4E4"
       isDarkBackground
       p={8}
       alignItems="flex-start"
@@ -78,6 +78,7 @@ const ProjectsSection = () => {
         id="projects-section" 
         style={{ fontFamily: "'Outfit', sans-serif", cursor:"default" }}
         fontSize={headingSize} 
+        color="black"
       >
         Featured Projects
       </Heading>
@@ -103,6 +104,7 @@ const ProjectsSection = () => {
         id="projects-section" 
         style={{ fontFamily: "'Outfit', sans-serif", cursor:"default"}}
         fontSize={headingSize} 
+        color="black"
       >
         See more projects on my{" "}
         <a target="_blank" rel="noopener noreferrer"

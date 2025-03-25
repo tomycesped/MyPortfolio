@@ -12,27 +12,47 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
       spacing={4}
       align="start"
       p={4}
-      bg="white"
+      bg="black"
       style={{ fontFamily: "'Outfit', sans-serif", cursor: "default" }}
       w="100%"
+      minHeight="350px"  // Ajusta el tamaño mínimo de la tarjeta
+      display="flex"
+      flexDirection="column"
     >
       <Image src={imageSrc} alt={title} borderRadius="md" />
-      <Heading size="md" color="blackAlpha.900" style={{ fontFamily: "'Outfit', sans-serif" }}>
+      <Heading size="md" color="white" style={{ fontFamily: "'Outfit', sans-serif" }}>
         {title}
       </Heading>
-      <Text color="gray.600">{description}</Text>
-      
-      <Flex w="100%" justifyContent="center" justify="space-between" wrap="wrap" gap={2}>
-        <a href={link} target="_blank" rel="noopener noreferrer" style={{ width: "100%", maxWidth: "calc(50% - 4px)", minWidth: "150px" }}>
-          <Button variant="ghost" color="blackAlpha.900" rightIcon={<FontAwesomeIcon icon={faArrowRight} />} w="100%">
+      <Text color="gray.300">{description}</Text>
+
+      {/* Flex container to push buttons to the bottom */}
+      <Flex
+        w="100%"
+        justifyContent="center"
+        direction="column"
+        gap={2}
+        flexGrow={1} // This ensures the buttons take up available space and stay at the bottom
+      >
+        <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+          <Button
+            bg="gray.900"
+            color="white"
+            rightIcon={<FontAwesomeIcon icon={faCodeBranch} />}
+            w="100%"
+          >
+            Check Repository
+          </Button>
+        </a>
+        <a href={link} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+          <Button
+            bg="gray.900"
+            color="white"
+            rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
+            w="100%"
+          >
             Visit Website
           </Button>
         </a>
-          <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%", maxWidth: "calc(50% - 4px)", minWidth: "150px" }}>
-            <Button variant="ghost" color="blackAlpha.900" rightIcon={<FontAwesomeIcon icon={faCodeBranch} />} w="100%">
-              Check Repository
-            </Button>
-          </a>
       </Flex>
     </VStack>
   );

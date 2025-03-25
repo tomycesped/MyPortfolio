@@ -13,7 +13,7 @@ const Footer = () => {
   };
 
   return (
-    <Box backgroundColor="#18181b">
+    <Box backgroundColor="#0D0D0D">
       <footer style={{
               fontFamily: "'Outfit', sans-serif"}}>
         <Flex
