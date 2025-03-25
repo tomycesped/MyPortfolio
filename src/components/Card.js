@@ -22,14 +22,14 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
       </Heading>
       <Text color="gray.600">{description}</Text>
       
-      <Flex w="100%" justify="space-between" wrap="wrap" gap={2}>
+      <Flex w="100%" justifyContent="center" justify="space-between" wrap="wrap" gap={2}>
         <a href={link} target="_blank" rel="noopener noreferrer" style={{ width: "100%", maxWidth: "calc(50% - 4px)", minWidth: "150px" }}>
-          <Button justifyContent="flex-start" variant="ghost" color="blackAlpha.900" rightIcon={<FontAwesomeIcon icon={faArrowRight} />} w="100%">
+          <Button variant="ghost" color="blackAlpha.900" rightIcon={<FontAwesomeIcon icon={faArrowRight} />} w="100%">
             Visit Website
           </Button>
         </a>
           <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%", maxWidth: "calc(50% - 4px)", minWidth: "150px" }}>
-            <Button justifyContent="flex-start"  variant="ghost" color="blackAlpha.900" rightIcon={<FontAwesomeIcon icon={faCodeBranch} />} w="100%">
+            <Button variant="ghost" color="blackAlpha.900" rightIcon={<FontAwesomeIcon icon={faCodeBranch} />} w="100%">
               Check Repository
             </Button>
           </a>
