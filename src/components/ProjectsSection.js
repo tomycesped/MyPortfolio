@@ -8,43 +8,44 @@ import "./styles.css";
 const projects = [
   {
     title: "Little Lemon Córdoba 👨🏻‍🍳",
-    description: '"Little Lemon Córdoba is a fictional restaurant website featuring a responsive landing page with online booking system, interactive menu display, photo gallery, and customer testimonials. The project showcases modern UI design with mobile-first approach and seamless dining experience across all devices."',
+    description: '"Little Lemon Córdoba" is a fictional restaurant website featuring a responsive landing page with online booking system, interactive menu display, photo gallery, and customer testimonials. The project showcases modern UI design with mobile-first approach and seamless dining experience across all devices.',
     getImageSrc: () => require("../images/lemon.png"),
     link: "littlelemoncordoba.vercel.app",
     repoLink: "https://github.com/tomycesped/Little-Lemon-Cordoba",
   },
   {
     title: "Shopi 🛍",
-    description: "Shopi is a virtual store app where I explored the potential of frontend development and implemented various features using TailWindCSS. This project reflects my journey in creating a functional and visually appealing online experience.",
+    description: '"Shopi" is a virtual store app where I explored the potential of frontend development and implemented various features using TailWindCSS. This project reflects my journey in creating a functional and visually appealing online experience.',
     getImageSrc: () => require("../images/shopibien.png"),
     link: "https://tomycesped.github.io/Shopi/",
     repoLink: "https://github.com/tomycesped/Shopi",
   },
   {
     title: "Lazy Foxes! 🦊",
-    description: "Lazy Foxes is an app where you can add fox photos that load progressively with Lazy Loading, providing a fast and smooth experience.",
+    description: '"Lazy Foxes!" is an app where you can add fox photos that load progressively with Lazy Loading, providing a fast and smooth experience.',
     getImageSrc: () => require("../images/foxesbien.png"),
     link: "https://lazyfoxes.vercel.app/",
     repoLink: "https://github.com/tomycesped/Foxes",
   },
   {
     title: "TO-DO List 📝",
-    description: "TO-DO List is an app that stores your tasks using local storage. It features custom hooks for a smooth, efficient user experience, allowing you to manage and track your tasks effortlessly.",
+    description: '"TO-DO List" is an app that stores your tasks using local storage. It features custom hooks for a smooth, efficient user experience, allowing you to manage and track your tasks effortlessly.',
     getImageSrc: () => require("../images/todobien.png"),
     link: "https://tomycesped.github.io/TodoList/",
     repoLink: "https://github.com/tomycesped/TodoList",
   },
   {
     title: "Async Landing Page ⭐️",
-    description: "Async Landing Page is a fan-driven site showcasing the latest videos of Ethel Cain using the YouTube API. With asynchronous loading, the page dynamically fetches and displays her newest content for an engaging, real-time experience.",
+    description: '"Async Landing Page" is a fan-driven site showcasing the latest videos of Ethel Cain using the YouTube API. With asynchronous loading, the page dynamically fetches and displays her newest content for an engaging, real-time experience.',
     getImageSrc: () => require("../images/ethelbien.png"),
     link: "https://tomycesped.github.io/Async-landing/",
     repoLink: "https://github.com/tomycesped/Async-landing",
   },
   {
     title: "More coming soon... ⏳",
-    description: "Be the first to know! Follow me on Github.",
+    description: "Be the first to know! Follow me on Github",
     getImageSrc: () => require("../images/moresoon.png"),
+    profileLink: "https://github.com/tomycesped/"
   },
 ];
 
@@ -116,7 +117,7 @@ const ProjectsSection = () => {
           Featured Projects
         </Heading>
         
-        <Box display="grid" gridTemplateColumns={gridColumns} gridGap={gridGap} width="100%">
+        <Box display="grid" gridTemplateColumns={gridColumns} gridGap={gridGap} width="100%" >
           <TransitionGroup component={null}>
             {projects.slice(0, visibleProjects).map((project) => (
               <CSSTransition key={project.title} timeout={300} classNames="project">
@@ -126,6 +127,7 @@ const ProjectsSection = () => {
                   imageSrc={project.getImageSrc()}
                   link={project.link}
                   repoLink={project.repoLink}
+                  profileLink={project.profileLink}
                 />
               </CSSTransition>
             ))}

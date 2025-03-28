@@ -2,8 +2,9 @@ import { Heading, VStack, Image, Text, Button, Flex } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-const Card = ({ title, description, imageSrc, link, repoLink }) => {
+const Card = ({ title, description, imageSrc, link, repoLink, profileLink }) => {
   return (
     <VStack
       borderRadius="lg"
@@ -48,7 +49,7 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
         flexGrow={1}
       >
         {repoLink && (
-          <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+          <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%", marginTop:"auto" }}>
             <Button
               bg="gray.900"
               color="white"
@@ -71,6 +72,20 @@ const Card = ({ title, description, imageSrc, link, repoLink }) => {
               _hover={{ bg: "gray.700" }}
             >
               Visit Website
+            </Button>
+          </a>
+        )}
+
+          {profileLink && (
+          <a href={profileLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%",  marginTop:"auto"  }}>
+            <Button
+              bg="gray.900"
+              color="white"
+              rightIcon={<FontAwesomeIcon icon={faGithub} />}
+              w="100%"
+              _hover={{ bg: "gray.700" }}
+            >
+              Follow me on Github
             </Button>
           </a>
         )}
