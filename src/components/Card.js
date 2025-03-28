@@ -8,7 +8,7 @@ const Card = ({ title, description, imageSrc, link, repoLink, isPartial }) => {
     <VStack
       borderRadius="lg"
       borderBottomRadius={isPartial ? "0" : "lg"}
-      boxShadow="md"
+      boxShadow={isPartial ? "0" : "lg"}
       overflow="hidden"
       spacing={4}
       align="start"
@@ -22,44 +22,49 @@ const Card = ({ title, description, imageSrc, link, repoLink, isPartial }) => {
       position="relative"
       className={isPartial ? "partial-card" : ""}
     >
-      <Image src={imageSrc} alt={title} borderRadius="md" w="100%" position="absolute" left="0" px="8px"/>
+      <Image src={imageSrc} alt={title} borderRadius="md" w="100%" position="absolute" left="0" px="18px"/>
       
       {!isPartial && (
         <>
-        <Heading size="md" color="white" style={{ fontFamily: "'Outfit', sans-serif", paddingTop:"55%" }}>
+        <Heading size="md" color="white" style={{ fontFamily: "'Outfit', sans-serif", paddingTop:"50%" }}>
         {title}
       </Heading>
           <Text color="gray.300">{description}</Text>
           <Flex
-            w="100%"
-            justifyContent="center"
-            direction="column"
-            gap={2}
-            flexGrow={1}
-          >
-            <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
-              <Button
-                bg="gray.900"
-                color="white"
-                rightIcon={<FontAwesomeIcon icon={faCodeBranch} />}
-                w="100%"
-                _hover={{ bg: "gray.700" }}
-              >
-                Check Repository
-              </Button>
-            </a>
-            <a href={link} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
-              <Button
-                bg="gray.900"
-                color="white"
-                rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
-                w="100%"
-                _hover={{ bg: "gray.700" }}
-              >
-                Visit Website
-              </Button>
-            </a>
-          </Flex>
+  w="100%"
+  justifyContent="center"
+  direction="column"
+  gap={2}
+  flexGrow={1}
+>
+  {repoLink && (
+    <a href={repoLink} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+      <Button
+        bg="gray.900"
+        color="white"
+        rightIcon={<FontAwesomeIcon icon={faCodeBranch} />}
+        w="100%"
+        _hover={{ bg: "gray.700" }}
+      >
+        Check Repository
+      </Button>
+    </a>
+  )}
+
+  {link && (
+    <a href={link} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+      <Button
+        bg="gray.900"
+        color="white"
+        rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
+        w="100%"
+        _hover={{ bg: "gray.700" }}
+      >
+        Visit Website
+      </Button>
+    </a>
+  )}
+</Flex>
         </>
       )}
       {isPartial && (
@@ -69,7 +74,7 @@ const Card = ({ title, description, imageSrc, link, repoLink, isPartial }) => {
           left={0}
           right={0}
           height="100%"
-          background="linear-gradient(to top, #E4E4E4,rgba(228, 228, 228, 0.28))"
+          background="linear-gradient(to top, #E4E4E4,rgba(45, 44, 44, 0.64))"
         />
       )}
     </VStack>

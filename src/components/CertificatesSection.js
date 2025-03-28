@@ -86,16 +86,17 @@ const CertificatesSection = () => {
               _hover={{ transform: "translateX(10px)", transition: "transform 0.2s" }}
               alignItems="center"
               justifyContent="space-between"
-              backgroundColor="rgba(0, 0, 0, 0.67)"
+              backgroundColor="rgba(0, 0, 0, 0.68)"
               borderRadius="12px"
               boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
               p={4}
             >
               <Box flex="1">
-                <Heading as="h2" fontSize="2xl" mb={2} fontWeight="600" color="#FFFFFF">
+                <Heading as="h2" fontSize="2xl" mb={2} fontWeight="600" color="#FFFFFF" cursor="default">
                   {certificate.title}
                 </Heading>
                 <Text
+                cursor="default"
                   fontSize="lg"
                   mb={2}
                   color="#E0E0E0"
@@ -112,7 +113,7 @@ const CertificatesSection = () => {
                     Read More...
                   </Button>
                 )}
-                <Text fontSize="md" color="#BDBDBD">
+                <Text fontSize="md" color="#BDBDBD" cursor="default">
                   Issued by: {certificate.issuedBy} | Date: {certificate.date}
                 </Text>
                 {certificate.link && (

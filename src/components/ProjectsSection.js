@@ -48,6 +48,12 @@ const projects = [
     link: "https://tomycesped.github.io/Async-landing/",
     repoLink: "https://github.com/tomycesped/Async-landing",
   },
+  {
+    title: "More coming soon... ⏳",
+    description:
+      "Be the first to know! Follow me on Github.",
+    getImageSrc: () => require("../images/moresoon.png"),
+  },
 ];
 
 const ProjectsSection = () => {
@@ -148,7 +154,7 @@ const ProjectsSection = () => {
         <Button
           onClick={loadMoreProjects}
           color="black"
-          bg="white"
+          bg="#F5F5F5"
           variant="outline"
           size="lg"
           alignSelf="center"
