@@ -91,12 +91,22 @@ const ProjectsSection = () => {
   const showAllProjects = visibleProjects === projects.length;
 
   return (
+    <Box 
+      bg="gray.50" 
+      _dark={{ bg: "gray.900" }}
+        w="100%"
+        >
     <Box
       ref={projectsRef}
        bg="gray.50" 
        _dark={{ bg: "gray.900" }}
        overflow="hidden"
        position="relative"
+       p={{ base: 6, md: 12 }}
+        alignItems="flex-start"
+        spacing={8}
+        maxW="1400px"
+        mx="auto"
        >
         <Box
   position="absolute"
@@ -105,19 +115,12 @@ const ProjectsSection = () => {
   right={0}
   bottom={0}
   bgImage="radial-gradient(circle at 50% 50%, rgba(225, 9, 9, 0.77) 0%, transparent 40%), 
-          radial-gradient(circle at 90% 70%, rgba(150, 150, 150, 0.1) 0%, transparent 50%)"
+          radial-gradient(circle at 50% 50%, rgba(249, 0, 0, 0.06) 0%, transparent 50%)"
   _dark={{
     bgImage: "radial-gradient(circle at 80% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 50%)"
   }}
   pointerEvents="none"
 />
-      <FullScreenSection
-        p={{ base: 6, md: 12 }}
-        alignItems="flex-start"
-        spacing={8}
-        maxW="1400px"
-        mx="auto"
-      >
         <Heading
           id="projects-section"
           as="h1"
@@ -213,7 +216,7 @@ const ProjectsSection = () => {
             </Button>
           )}
         </Flex>
-      </FullScreenSection>
+    </Box>
     </Box>
   );
 };

@@ -6,14 +6,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #18181b;
+  background-color: #0D0D0D;
   overflow-x: hidden; /* Esto evita el desplazamiento horizontal */
   width: 100vw; /* Asegura que el body ocupe todo el ancho del viewport */
 }
 
 html {
-  background-color: #18181b;
-  overflow-x: hidden; /* Doble protección */
+  background-color: #0D0D0D;
+  z-index: 0;
 }
 
 code {
@@ -24,5 +24,4 @@ code {
 /* Añade esto para contenedores principales */
 #root {
   max-width: 100%;
-  overflow-x: hidden;
 }

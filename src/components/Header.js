@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack, VStack, useBreakpointValue, IconButton, useDisclosure, Collapse } from "@chakra-ui/react";
@@ -35,8 +35,9 @@ const Header = () => {
     lg: "lg",  
   });
 
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const headerRef = useRef();
 
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
@@ -52,11 +53,24 @@ const Header = () => {
       });
       if (isMobile) {
         setTimeout(() => {
-          onToggle();
+          onClose();
         }, 800); 
       }
     }
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && headerRef.current && !headerRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
 
   return (
     <Box
@@ -65,6 +79,7 @@ const Header = () => {
       left={0}
       right={0}
       zIndex={10}
+      ref={headerRef}
     >
       <Box color="white" margin="0 auto">
         <HStack

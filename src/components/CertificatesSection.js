@@ -66,8 +66,18 @@ const CertificatesSection = () => {
 
   return (
     <Box 
+  bg="gray.50" 
+  _dark={{ bg: "gray.900" }}
+  w="100%"
+>
+    <Box 
       position="relative"
       bg="gray.50"
+      p={{ base: 6, md: 12 }}
+        alignItems="flex-start"
+        spacing={8}
+        maxW="1400px"
+        mx="auto"
       _dark={{ bg: "gray.900" }}
     >
       <Box
@@ -76,22 +86,13 @@ const CertificatesSection = () => {
         left={0}
         right={0}
         bottom={0}
-        bgImage="radial-gradient(circle at 80% 50%, rgba(31, 210, 189, 0.82) 0%, transparent 30%), 
-                radial-gradient(circle at 90% 70%, rgba(150, 150, 150, 0.1) 0%, transparent 50%)"
+        bgImage="radial-gradient(circle at 50% 50%, rgba(31, 210, 189, 0.82) 0%, transparent 40%), 
+                radial-gradient(circle at 90% 70%, rgba(70, 129, 158, 0.02) 0%, transparent 50%)"
         _dark={{
           bgImage: "radial-gradient(circle at 80% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 50%)"
         }}
         pointerEvents="none"
       />
-
-      <FullScreenSection
-        p={{ base: 6, md: 12 }}
-        alignItems="flex-start"
-        spacing={8}
-        maxW="1400px"
-        mx="auto"
-        position="relative"
-      >
         <Heading
           as="h1"
           id="certificates-section"
@@ -206,18 +207,19 @@ const CertificatesSection = () => {
         <Heading
           as="h3"
           fontFamily="'Outfit', sans-serif"
-          fontSize="xl"
+          fontSize="2xl"
           fontWeight="600"
           color="black"
           _dark={{ color: "white" }}
           mt={8}
+          justifySelf="center"
         >
           See more certificates on my{" "}
           <Button
             as="a"
             href="https://www.linkedin.com/in/tomcesped"
             target="_blank"
-            fontSize="xl"
+            fontSize="2xl"
             variant="link"
             color="linkedin.500"
             _dark={{ color: "linkedin.300" }}
@@ -227,7 +229,7 @@ const CertificatesSection = () => {
             Linkedin
           </Button>
         </Heading>
-      </FullScreenSection>
+    </Box>
     </Box>
   );
 };

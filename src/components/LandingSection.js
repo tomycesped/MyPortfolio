@@ -26,13 +26,20 @@ const fadeInAnimation = keyframes`
 `;
 
 const LandingSection = () => {
+  
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+      const headerHeight = 72;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }}
 
   const pulse = keyframes`
   0% { background-position: 0% 50%; }
@@ -57,7 +64,7 @@ const LandingSection = () => {
         right={0}
         bottom={0}
         bgImage="radial-gradient(circle at 20% 30%, rgba(10, 25, 156, 0.36) 0%, transparent 30%), 
-                radial-gradient(circle at 80% 70%, rgba(150, 150, 150, 0.1) 0%, transparent 30%)"
+                radial-gradient(circle at 80% 60%, rgba(17, 35, 199, 0.27) 0%, transparent 20%)"
         _dark={{
           bgImage: "radial-gradient(circle at 20% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 30%)"
         }}
@@ -151,7 +158,7 @@ const LandingSection = () => {
     backgroundSize: '200% 200%'
   }}
 >
-  frontend developer
+  frontend developer&nbsp;
 </Box>
 
   <Box as="br" display={{ base: "none", md: "block" }} />
