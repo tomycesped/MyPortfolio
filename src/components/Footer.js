@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Flex } from "@chakra-ui/react";
+import logoblanco from "../images/logoblanco.png";
 
 const Footer = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -24,7 +25,9 @@ const Footer = () => {
           alignItems="center"
           maxWidth="1024px"
           height={16}
-        ><p style={{ cursor:"default" }}>made by&nbsp;</p>
+        >
+          <img src={logoblanco} alt="Logo" style={{ height: "35px", marginTop:"2px" }} />
+          <p style={{ cursor:"default" }}>&nbsp;was made by&nbsp;</p>
           <p
             style={{
               transform: isClicked ? "scale(1.1) translateY(-5px)" : "scale(1) translateY(0)",
