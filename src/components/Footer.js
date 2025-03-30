@@ -18,12 +18,12 @@ const Footer = () => {
       <footer style={{
               fontFamily: "'Outfit', sans-serif"}}>
         <Flex
-          margin="0 auto"
-          px={12}
+          margin="0"
+          px="10px"
           color="white"
           justifyContent="center"
           alignItems="center"
-          maxWidth="1024px"
+          width="100%"
           height={16}
         >
           <img src={logoblanco} alt="Logo" style={{ height: "35px", marginTop:"2px" }} />
