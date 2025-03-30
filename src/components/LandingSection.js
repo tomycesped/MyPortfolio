@@ -1,106 +1,235 @@
 import React from "react";
+import { css, keyframes } from "@emotion/react";
+import { 
+  Image, 
+  Text, 
+  VStack, 
+  Flex, 
+  Button, 
+  HStack, 
+  Box
+} from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 import tom from "../images/tomi.jpg";
-import { Image, Text, VStack, Flex, Button, HStack } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileDownload, faProjectDiagram, faAward, faAtom } from "@fortawesome/free-solid-svg-icons";
+import { faFileDownload, faProjectDiagram, faAward } from "@fortawesome/free-solid-svg-icons";
+
+const floatAnimation = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+`;
+
+const fadeInAnimation = keyframes`
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
 
 const LandingSection = () => {
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
     if (element) {
-      const headerHeight = 72; 
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-  
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
+  const pulse = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
   return (
     <FullScreenSection
-      isDarkBackground
-      backgroundColor="#F5F5F5" 
+      width="100%"
       justifyContent="center"
       alignItems="center"
-      color="#0D0D0D" 
+      bg="gray.50"
+      position="relative"
+      overflow="hidden"
+      _dark={{ bg: "gray.900" }}
     >
-      <Flex
-        direction={{ base: "column", md: "row" }} 
-        align="center"
-        gap={6} 
-      >
-        <Image
-          h="200px"
-          w="200px"
-          objectFit="cover"
-          borderRadius="full"
-          border="3px solid #A1A1A1"
-          transition="transform 0.3s ease"
-          src={tom}
-          alt="me"
-          onClick={handleClick}
-        />
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        bgImage="radial-gradient(circle at 20% 30%, rgba(10, 25, 156, 0.36) 0%, transparent 30%), 
+                radial-gradient(circle at 80% 70%, rgba(150, 150, 150, 0.1) 0%, transparent 30%)"
+        _dark={{
+          bgImage: "radial-gradient(circle at 20% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 30%)"
+        }}
+        pointerEvents="none"
+      />
 
-        <VStack spacing={4} align={{ base: "center", md: "start" }}>
+      <Flex
+        width="100%"
+        direction={{ base: "column", md: "row" }}
+        align="center"
+        justify="center"
+        gap={{ base: 8, md: 16 }}
+        position="relative"
+        px={6}
+        py="80px"
+      >
+        <Box
+          position="relative"
+          css={css`
+            animation: ${floatAnimation} 5s ease-in-out infinite;
+            @media (prefers-reduced-motion: reduce) {
+              animation: none;
+            }
+          `}
+          _hover={{ transform: "scale(1.03)" }}
+          transition="transform 0.3s ease"
+        >
+          <Image
+            boxSize={{ base: "180px", md: "240px" }}
+            objectFit="cover"
+            borderRadius="full"
+            border="4px solid"
+            borderColor="gray.300"
+            _dark={{ borderColor: "gray.600", boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)"  }}
+            boxShadow="0 4px 20px rgba(0, 0, 0, 0.1)"
+            src={tom}
+            alt="Profile"
+          />
+          <Box
+            position="absolute"
+            inset={0}
+            borderRadius="full"
+            border="2px"
+            borderColor="gray.400"
+            _dark={{ borderColor: "gray.500" }}
+            opacity={0.6}
+            transform="rotate(5deg)"
+          />
+        </Box>
+        <VStack 
+          spacing={6}
+          align={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", md: "left" }}
+          css={css`
+            & > * {
+              animation: ${fadeInAnimation} 0.8s ease-out forwards;
+              opacity: 0;
+            }
+            & > *:nth-child(1) { animation-delay: 0.1s; }
+            & > *:nth-child(2) { animation-delay: 0.3s; }
+            & > *:nth-child(3) { animation-delay: 0.5s; }
+            & > *:nth-child(4) { animation-delay: 0.7s; }
+          `}
+        >
           <Text
-            fontSize="18px"
-            fontFamily="'Outfit', sans-serif"
-            cursor="default"
-            onClick={handleClick}
+            fontSize={{ base: "xl", md: "2xl" }}
+            color="gray.600"
+            _dark={{ color: "gray.300" }}
+            fontWeight="semibold"
+            letterSpacing="1px"
           >
-            Hello, I am Thomas!
+            Hola, I'm Thomas!
           </Text>
+
           <Text
-            fontSize="30px"
-            textAlign={{ base: "center", md: "left" }}
-            cursor="default"
-            whiteSpace="pre-line"
-            fontFamily="'Outfit', sans-serif"
-            margin="0"
-            fontWeight="bold"
+  fontSize={{ base: "3xl", md: "5xl" }}
+  fontWeight="extrabold"
+  lineHeight="1.1"
+  color="gray.800"
+  _dark={{ color: "white" }}
+>
+  A{' '}
+  <Box 
+  as="span"
+  display="inline-block"
+  bgGradient="linear(to-r, #3B82F6, #10B981,rgb(243, 235, 24))"
+  bgClip="text"
+  _dark={{ bgGradient: "linear(to-r, #A78BFA, #F472B6)" }}
+  css={{
+    animation: `${pulse} 5s ease infinite`,
+    backgroundSize: '200% 200%'
+  }}
+>
+  frontend developer
+</Box>
+
+  <Box as="br" display={{ base: "none", md: "block" }} />
+  specialized in React
+</Text>
+
+          <Text
+            fontSize={{ base: "md", md: "lg" }}
+            color="gray.600"
+            _dark={{ color: "gray.400" }}
+            maxW={{ md: "90%" }}
           >
-            A frontend developer{"\n"}specialized in React&nbsp;
-            <FontAwesomeIcon icon={faAtom} />
+            I create modern web experiences with intuitive interfaces and efficient code.
           </Text>
-          <HStack spacing={3} flexWrap="wrap" justify={{ base: "center", md: "start" }}>
+
+          <HStack spacing={4} flexWrap="wrap" justify={{ base: "center", md: "start" }}>
             <Button
               as="a"
               href="/TOM_CVENG.pdf"
-              download="Thomas_CV.pdf"
+              download
               leftIcon={<FontAwesomeIcon icon={faFileDownload} />}
-              bg="#0D0D0D"
+              size="lg"
+              bg="gray.800"
+              borderRadius="full"
               color="white"
-              _hover={{ bg: "#1C1C1C" }}
-              borderRadius="xl"
+              _hover={{ 
+                bg: "gray.700",
+                transform: "translateY(-2px)" 
+              }}
+              _dark={{
+                bg: "gray.700",
+                _hover: { bg: "gray.600" }
+              }}
+              transition="all 0.2s"
             >
               Download CV
             </Button>
 
             <Button
-             onClick={handleClick("projects")} href="/#projects"
+              onClick={handleClick("projects")}
               leftIcon={<FontAwesomeIcon icon={faProjectDiagram} />}
-              bg="#0D0D0D"
-              color="white"
-              _hover={{ bg: "#1C1C1C" }}
-              borderRadius="xl"
+              size="lg"
+              variant="outline"
+              borderColor="gray.800"
+              borderRadius="full"
+              color="gray.800"
+              _hover={{ 
+                bg: "gray.100",
+                transform: "translateY(-2px)" 
+              }}
+              _dark={{
+                borderColor: "gray.400",
+                color: "gray.200",
+                _hover: { bg: "gray.800" }
+              }}
+              transition="all 0.2s"
             >
               View Projects
             </Button>
 
             <Button
-              as="a"
-              onClick={handleClick("certificates")} 
-              href="/#certificates"
+              onClick={handleClick("certificates")}
               leftIcon={<FontAwesomeIcon icon={faAward} />}
-              bg="#0D0D0D"
-              color="white"
-              _hover={{ bg: "#1C1C1C" }}
-              borderRadius="xl"
+              size="lg"
+              variant="outline"
+              borderColor="gray.800"
+              color="gray.800"
+              borderRadius="full"
+              _hover={{ 
+                bg: "gray.100",
+                transform: "translateY(-2px)" 
+              }}
+              _dark={{
+                borderColor: "gray.400",
+                color: "gray.200",
+                _hover: { bg: "gray.800" }
+              }}
+              transition="all 0.2s"
             >
               View Certificates
             </Button>
@@ -108,7 +237,6 @@ const LandingSection = () => {
         </VStack>
       </Flex>
     </FullScreenSection>
-
   );
 };
 

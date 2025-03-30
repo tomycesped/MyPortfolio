@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FullScreenSection from "./FullScreenSection";
-import { Box, Heading, useBreakpointValue, List, ListItem, Text, Flex, Image, Button } from "@chakra-ui/react";
+import { css, keyframes } from "@emotion/react";
+import { Box, Heading, useBreakpointValue, List, ListItem, Text, Flex, Image, Button} from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -42,10 +43,14 @@ const certificates = [
   },
 ];
 
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
 const CertificatesSection = () => {
   const headingSize = useBreakpointValue({
-    base: "xl",
-    sm: "2xl",
+    base: "2xl",
     md: "3xl",
     lg: "4xl",
   });
@@ -60,106 +65,170 @@ const CertificatesSection = () => {
   };
 
   return (
-    <FullScreenSection
-      backgroundColor="#DCDCDC"
-      p={8}
-      alignItems="flex-start"
-      spacing={8}
-      style={{ fontFamily: "'Outfit', sans-serif", width: "100%" }}
+    <Box 
+      position="relative"
+      bg="gray.50"
+      _dark={{ bg: "gray.900" }}
     >
-      <Heading
-        as="h1"
-        id="certificates-section"
-        style={{ fontFamily: "'Outfit', sans-serif", cursor: "default" }}
-        fontSize={headingSize}
-        fontWeight="600"
-        color="black"
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        bgImage="radial-gradient(circle at 80% 50%, rgba(31, 210, 189, 0.82) 0%, transparent 30%), 
+                radial-gradient(circle at 90% 70%, rgba(150, 150, 150, 0.1) 0%, transparent 50%)"
+        _dark={{
+          bgImage: "radial-gradient(circle at 80% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 50%)"
+        }}
+        pointerEvents="none"
+      />
+
+      <FullScreenSection
+        p={{ base: 6, md: 12 }}
+        alignItems="flex-start"
+        spacing={8}
+        maxW="1400px"
+        mx="auto"
+        position="relative"
       >
-        Certificates
-      </Heading>
-      <List spacing={6} width="100%">
-        {certificates.map((certificate, index) => (
-          <ListItem key={certificate.title}>
-            <Flex
-              borderLeft="4px solid black"
-              pl={4}
-              _hover={{ transform: "translateX(10px)", transition: "transform 0.2s" }}
-              alignItems="center"
-              justifyContent="space-between"
-              backgroundColor="rgba(0, 0, 0, 0.68)"
-              borderRadius="12px"
-              boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
-              p={4}
-            >
-              <Box flex="1">
-                <Heading as="h2" fontSize="2xl" mb={2} fontWeight="600" color="#FFFFFF" cursor="default">
-                  {certificate.title}
-                </Heading>
-                <Text
-                cursor="default"
-                  fontSize="lg"
-                  mb={2}
-                  color="#E0E0E0"
-                  noOfLines={useBreakpointValue({ base: expanded[index] ? undefined : 2, md: undefined })}
-                >
-                  {certificate.description}
-                </Text>
-                {useBreakpointValue({ base: !expanded[index], md: false }) && (
-                  <Button
-                    variant="link"
-                    style={{ color: "#F5F5F5", textDecoration: "underline" }}
-                    onClick={() => toggleExpand(index)}
-                  >
-                    Read More...
-                  </Button>
-                )}
-                <Text fontSize="md" color="#BDBDBD" cursor="default">
-                  Issued by: {certificate.issuedBy} | Date: {certificate.date}
-                </Text>
-                {certificate.link && (
-                  <a
-                    href={certificate.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "#F5F5F5", textDecoration: "underline" }}
-                  >
-                    View Certificate
-                  </a>
-                )}
-              </Box>
-              <Box ml={4}>
-                <Image
-                  src={certificate.logo}
-                  alt={`${certificate.issuedBy} logo`}
-                  boxSize="120px"
-                  objectFit="contain"
-                />
-              </Box>
-            </Flex>
-          </ListItem>
-        ))}
-      </List>
-      <Heading
-        as="h1"
-        id="certificates-section"
-        style={{ fontFamily: "'Outfit', sans-serif", cursor: "default" }}
-        fontSize={headingSize}
-        fontWeight="600"
-        color="black"
-      >
-        See more certificates on my{" "}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#005CCA", textDecoration: "underline" }}
-          href="https://www.linkedin.com/in/tomcesped"
+        <Heading
+          as="h1"
+          id="certificates-section"
+          fontFamily="'Outfit', sans-serif"
+          fontSize={headingSize}
+          fontWeight="600"
+          color="black"
+          textAlign={{ base: "center", md: "left" }}
+          _dark={{ color: "white" }}
+          mb={8}
+          width="100%"
+          textDecoration="underline"
+  textDecorationColor="rgba(31, 210, 189, 0.82)"
+  textDecorationThickness="2px" 
+  textUnderlineOffset="4px"
         >
-          Linkedin
-        </a>
-        &nbsp;
-        <FontAwesomeIcon icon={faLinkedin} size="1x" color="#005CCA" />
-      </Heading>
-    </FullScreenSection>
+          Certificates
+        </Heading>
+
+        <List spacing={6} width="100%">
+          {certificates.map((certificate, index) => (
+            <ListItem 
+              key={certificate.title}
+              css={{
+                animation: `${fadeIn} 0.5s ease-out forwards`,
+                animationDelay: `${index * 0.1}s`
+              }}
+            >
+              <Flex
+                borderLeft="4px solid"
+                borderColor="black"
+                _dark={{ borderColor: "white", bg: "rgba(255, 255, 255, 0.1)" }}
+                pl={4}
+                _hover={{ 
+                  transform: "translateX(10px)", 
+                  transition: "transform 0.2s",
+                  boxShadow: "lg"
+                }}
+                alignItems="center"
+                justifyContent="space-between"
+                bg="rgba(0, 0, 0, 0.68)"
+                borderRadius="12px"
+                boxShadow="md"
+                p={6}
+                transition="all 0.3s ease"
+              >
+                <Box flex="1">
+                  <Heading 
+                    as="h2" 
+                    fontSize="2xl" 
+                    mb={2} 
+                    fontWeight="600" 
+                    color="white"
+                    _dark={{ color: "white" }}
+                  >
+                    {certificate.title}
+                  </Heading>
+                  <Text
+                    fontSize="lg"
+                    mb={2}
+                    color="gray.200"
+                    _dark={{ color: "gray.300" }}
+                    noOfLines={useBreakpointValue({ base: expanded[index] ? undefined : 2, md: undefined })}
+                  >
+                    {certificate.description}
+                  </Text>
+                  {useBreakpointValue({ base: !expanded[index], md: false }) && (
+                    <Button
+                      variant="link"
+                      color="gray.300"
+                      _dark={{ color: "gray.400" }}
+                      textDecoration="underline"
+                      onClick={() => toggleExpand(index)}
+                      _hover={{ color: "white" }}
+                    >
+                      Read More...
+                    </Button>
+                  )}
+                  <Text fontSize="md" color="gray.400" _dark={{ color: "gray.500" }} mt={2}>
+                    Issued by: {certificate.issuedBy} | Date: {certificate.date}
+                  </Text>
+                  {certificate.link && (
+                    <Button
+                      as="a"
+                      href={certificate.link}
+                      target="_blank"
+                      variant="link"
+                      color="teal.300"
+                      _hover={{ textDecoration: "underline" }}
+                      mt={2}
+                      display="inline-block"
+                    >
+                      View Certificate
+                    </Button>
+                  )}
+                </Box>
+                <Box ml={6}>
+                  <Image
+                    src={certificate.logo}
+                    alt={`${certificate.issuedBy} logo`}
+                    boxSize="120px"
+                    objectFit="contain"
+                    filter="brightness(0) invert(1)"
+                    _dark={{ filter: "none" }}
+                  />
+                </Box>
+              </Flex>
+            </ListItem>
+          ))}
+        </List>
+
+        <Heading
+          as="h3"
+          fontFamily="'Outfit', sans-serif"
+          fontSize="xl"
+          fontWeight="600"
+          color="black"
+          _dark={{ color: "white" }}
+          mt={8}
+        >
+          See more certificates on my{" "}
+          <Button
+            as="a"
+            href="https://www.linkedin.com/in/tomcesped"
+            target="_blank"
+            fontSize="xl"
+            variant="link"
+            color="linkedin.500"
+            _dark={{ color: "linkedin.300" }}
+            _hover={{ textDecoration: "underline" }}
+            rightIcon={<FontAwesomeIcon icon={faLinkedin} />}
+          >
+            Linkedin
+          </Button>
+        </Heading>
+      </FullScreenSection>
+    </Box>
   );
 };
 

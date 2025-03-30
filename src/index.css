@@ -1,17 +1,28 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #18181b;
+  overflow-x: hidden; /* Esto evita el desplazamiento horizontal */
+  width: 100vw; /* Asegura que el body ocupe todo el ancho del viewport */
 }
 
 html {
   background-color: #18181b;
+  overflow-x: hidden; /* Doble protección */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Añade esto para contenedores principales */
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
 }

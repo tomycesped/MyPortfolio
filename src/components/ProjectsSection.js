@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import FullScreenSection from "./FullScreenSection";
-import { Box, Heading, Button, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { css, keyframes } from "@emotion/react";
+import { Box, Heading, Button, Flex, useBreakpointValue} from "@chakra-ui/react";
 import Card from "./Card";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./styles.css";
@@ -49,6 +50,11 @@ const projects = [
   },
 ];
 
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
 const ProjectsSection = () => {
   const [visibleProjects, setVisibleProjects] = useState(2);
   const projectsRef = useRef(null);
@@ -57,70 +63,97 @@ const ProjectsSection = () => {
   const gridColumns = useBreakpointValue({
     base: "1fr",
     sm: "repeat(2, 1fr)",
-    md: "repeat(2, 1fr)",
     lg: "repeat(2, 1fr)",
   });
 
   const headingSize = useBreakpointValue({
-    base: "xl",
-    sm: "2xl",
+    base: "2xl",
     md: "3xl",
     lg: "4xl",
   });
 
   const gridGap = useBreakpointValue({
-    base: 4,
-    sm: 6,
+    base: 6,
     md: 8,
-    lg: 8,
+    lg: 10,
   });
 
   const loadMoreProjects = () => {
     setVisibleProjects(prev => Math.min(prev + projectsPerLoad, projects.length));
   };
 
-  const resetProjects = (anchor) => {
+  const resetProjects = () => {
     setVisibleProjects(2);
-    const id = `${anchor}-section`;
-    const element = document.getElementById(id);
-    if (element) {
-      const headerHeight = 72;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-  
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+    projectsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const hasMoreProjects = visibleProjects < projects.length;
   const showAllProjects = visibleProjects === projects.length;
 
   return (
-    <div ref={projectsRef}>
+    <Box
+      ref={projectsRef}
+       bg="gray.50" 
+       _dark={{ bg: "gray.900" }}
+       overflow="hidden"
+       position="relative"
+       >
+        <Box
+  position="absolute"
+  top={0}
+  left={0}
+  right={0}
+  bottom={0}
+  bgImage="radial-gradient(circle at 50% 50%, rgba(225, 9, 9, 0.77) 0%, transparent 40%), 
+          radial-gradient(circle at 90% 70%, rgba(150, 150, 150, 0.1) 0%, transparent 50%)"
+  _dark={{
+    bgImage: "radial-gradient(circle at 80% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 50%)"
+  }}
+  pointerEvents="none"
+/>
       <FullScreenSection
-        backgroundColor="#E4E4E4"
-        isDarkBackground
-        p={8}
+        p={{ base: 6, md: 12 }}
         alignItems="flex-start"
         spacing={8}
+        maxW="1400px"
+        mx="auto"
       >
         <Heading
           id="projects-section"
           as="h1"
-          style={{ fontFamily: "'Outfit', sans-serif", cursor: "default" }}
+          fontFamily="'Outfit', sans-serif"
           fontSize={headingSize}
           color="black"
+          _dark={{ color: "white" }}
+          mb={8}
+          textAlign={{ base: "center", md: "left" }}
+          width="100%"
+          textDecoration="underline"
+  textDecorationColor="red"
+  textDecorationThickness="2px" 
+  textUnderlineOffset="4px"
         >
           Featured Projects
         </Heading>
         
-        <Box display="grid" gridTemplateColumns={gridColumns} gridGap={gridGap} width="100%" >
+        <Box 
+          display="grid" 
+          gridTemplateColumns={gridColumns} 
+          gap={gridGap} 
+          width="100%"
+          css={{
+            "& > *": {
+              animation: `${fadeIn} 0.5s ease-out forwards`,
+            }
+          }}
+        >
           <TransitionGroup component={null}>
             {projects.slice(0, visibleProjects).map((project) => (
-              <CSSTransition key={project.title} timeout={300} classNames="project">
+              <CSSTransition 
+                key={project.title} 
+                timeout={500} 
+                classNames="project"
+              >
                 <Card
                   title={project.title}
                   description={project.description}
@@ -134,40 +167,54 @@ const ProjectsSection = () => {
           </TransitionGroup>
         </Box>
 
-        <Flex justifyContent="center" width="100%" gap={4}>
+        <Flex justifyContent="center" width="100%" mt={8} gap={4}>
           {hasMoreProjects && (
             <Button
               onClick={loadMoreProjects}
-              color="black"
-              bg="#F5F5F5"
-              variant="outline"
               size="lg"
+              boxShadow="lg"
+              variant="outline"
               borderWidth="2px"
               borderColor="black"
+              _dark={{ borderColor: "white", color: "white" }}
               borderRadius="full"
-              _hover={{ bg: "black", color: "white" }}
+              _hover={{ 
+                bg: "black",
+                color: "white",
+                _dark: { bg: "white", color: "black" }
+              }}
+              px={8}
+              py={6}
+              fontWeight="semibold"
             >
               Show More
             </Button>
           )}
           {showAllProjects && (
             <Button
-              onClick={() => resetProjects("projects")}
-              color="black"
-              bg="#F5F5F5"
-              variant="outline"
+              onClick={resetProjects}
               size="lg"
+              boxShadow="lg"
+              variant="outline"
               borderWidth="2px"
               borderColor="black"
+              _dark={{ borderColor: "white", color: "white" }}
               borderRadius="full"
-              _hover={{ bg: "black", color: "white" }}
+              _hover={{ 
+                bg: "black",
+                color: "white",
+                _dark: { bg: "white", color: "black" }
+              }}
+              px={8}
+              py={6}
+              fontWeight="semibold"
             >
               Show Less
             </Button>
           )}
         </Flex>
       </FullScreenSection>
-    </div>
+    </Box>
   );
 };
 

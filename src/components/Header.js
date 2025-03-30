@@ -123,6 +123,8 @@ const Header = () => {
             <IconButton
               icon={<FontAwesomeIcon icon={isOpen ? faTimes : faBars} />}
               onClick={onToggle}
+              border="1px"
+              borderColor="white"
               color="white"
               _hover={{
                 color:"black",
