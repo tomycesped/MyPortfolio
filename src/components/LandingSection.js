@@ -202,11 +202,13 @@ const LandingSection = () => {
               leftIcon={<FontAwesomeIcon icon={faProjectDiagram} />}
               size="lg"
               variant="outline"
+              bg="white"
               borderColor="gray.800"
               borderRadius="full"
               color="gray.800"
               _hover={{ 
-                bg: "gray.100",
+                bg: "gray.800",
+                color: "white",
                 transform: "translateY(-2px)" 
               }}
               _dark={{
@@ -226,9 +228,11 @@ const LandingSection = () => {
               variant="outline"
               borderColor="gray.800"
               color="gray.800"
+              bg="white"
               borderRadius="full"
               _hover={{ 
-                bg: "gray.100",
+                bg: "gray.800",
+                color: "white",
                 transform: "translateY(-2px)" 
               }}
               _dark={{

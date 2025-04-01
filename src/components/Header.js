@@ -105,17 +105,17 @@ const Header = () => {
                 borderRadius="md"
                 border="1px solid"
                 borderColor="gray.600"
-                color="white"
-                bg="whiteAlpha.500"
+                color="gray.800"
+                bg="white"
                 transition="all 0.2s ease"
                 _hover={{
-                  bg: "whiteAlpha.300",
+                  bg: "whiteAlpha.800",
                   borderColor: "gray.400",
                 }}
                 style={{ fontFamily: "'Outfit', sans-serif" }}
                 _active={{
                   transform: "translateY(0)",
-                  bg: "whiteAlpha.200"
+                  bg: "whiteAlpha.700"
                 }}
               >
                 Contact me
@@ -177,11 +177,11 @@ const Header = () => {
                 borderRadius="md"
                 border="1px solid"
                 borderColor="gray.600"
-                color="white"
-                bg="whiteAlpha.500"
+                color="gray.800"
+                bg="white"
                 transition="all 0.2s ease"
                 _hover={{
-                  bg: "whiteAlpha.300",
+                  bg: "whiteAlpha.800",
                   borderColor: "gray.400",
                 }}
                 style={{ fontFamily: "'Outfit', sans-serif" }}

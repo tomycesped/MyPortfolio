@@ -123,7 +123,7 @@ const CertificatesSection = () => {
             >
               <Flex
                 borderLeft="4px solid"
-                borderColor="black"
+                borderColor="teal.300"
                 _dark={{ borderColor: "white", bg: "rgba(255, 255, 255, 0.1)" }}
                 pl={4}
                 _hover={{ 
@@ -184,6 +184,10 @@ const CertificatesSection = () => {
                       _hover={{ textDecoration: "underline" }}
                       mt={2}
                       display="inline-block"
+                      textDecoration="underline"
+  textDecorationColor="teal.300"
+  textDecorationThickness="2px" 
+  textUnderlineOffset="3px"
                     >
                       View Certificate
                     </Button>

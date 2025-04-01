@@ -13,7 +13,10 @@ const fadeIn = keyframes`
 const Card = ({ title, description, imageSrc, link, repoLink, profileLink }) => {
   return (
     <Box
-    zIndex={3}
+    zIndex={3} 
+    borderLeft="4px solid"
+    borderTop="3px solid"
+    borderColor="rgba(212, 9, 9, 0.63)"
       borderRadius="xl"
       overflow="hidden"
       boxShadow="lg"
@@ -35,7 +38,7 @@ const Card = ({ title, description, imageSrc, link, repoLink, profileLink }) => 
         h="100%"
         overflow="hidden"
       >
-        <Box position="relative" w="100%" borderRadius="md" overflow="hidden" flexShrink={0}>
+        <Box position="relative" w="100%" borderRadius="md" overflow="hidden"  flexShrink={0}>
           <Image 
             src={imageSrc} 
             alt={title}
@@ -48,24 +51,12 @@ const Card = ({ title, description, imageSrc, link, repoLink, profileLink }) => 
         <Box 
           flex="1" 
           overflowY="auto" 
-          w="100%" 
-          css={css`
-            &::-webkit-scrollbar {
-              width: 6px;
-            }
-            &::-webkit-scrollbar-track {
-              background: transparent;
-            }
-            &::-webkit-scrollbar-thumb {
-              background: #2D3748;
-              border-radius: 3px;
-            }
-            &::-webkit-scrollbar-thumb:hover {
-              background: #4A5568;
-            }
-          `}
+          w="100%"
         >
-          <Heading size="md" color="white" fontFamily="'Outfit', sans-serif" mb={2}>
+          <Heading size="md" color="white" fontFamily="'Outfit', sans-serif" textDecoration="underline"
+  textDecorationColor="rgba(212, 9, 9, 0.63)"
+  textDecorationThickness="2px" 
+  textUnderlineOffset="3px" mb={2}>
             {title}
           </Heading>
           <Text zIndex={3} color="gray.300" _dark={{ color: "gray.400" }}>
@@ -79,11 +70,11 @@ const Card = ({ title, description, imageSrc, link, repoLink, profileLink }) => 
               as="a"
               href={repoLink}
               target="_blank"
-              bg="rgba(255, 0, 0, 0.28)"
+              bg="white"
               _dark={{ bg: "gray.700" }}
-              color="white"
+              color="gray.800"
               rightIcon={<FontAwesomeIcon icon={faCodeBranch} />}
-              _hover={{ bg: "red", _dark: { bg: "gray.600" } }}
+              _hover={{ bg: "whiteAlpha.800", _dark: { bg: "gray.600" } }}
               size="sm"
             >
               Check Repository
@@ -95,11 +86,11 @@ const Card = ({ title, description, imageSrc, link, repoLink, profileLink }) => 
               as="a"
               href={link}
               target="_blank"
-              bg="rgba(255, 0, 0, 0.28)"
+              bg="white"
               _dark={{ bg: "gray.700" }}
-              color="white"
+              color="gray.800"
               rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
-              _hover={{ bg: "red", _dark: { bg: "gray.600" } }}
+              _hover={{ bg: "whiteAlpha.800", _dark: { bg: "gray.600" } }}
               size="sm"
             >
               Visit Website
@@ -111,11 +102,11 @@ const Card = ({ title, description, imageSrc, link, repoLink, profileLink }) => 
               as="a"
               href={profileLink}
               target="_blank"
-              bg="rgba(255, 0, 0, 0.28)"
+              bg="white"
               _dark={{ bg: "gray.700" }}
-              color="white"
+              color="gray.800"
               rightIcon={<FontAwesomeIcon icon={faGithub} />}
-              _hover={{ bg: "red", _dark: { bg: "gray.600" } }}
+              _hover={{ bg: "whiteAlpha.800", _dark: { bg: "gray.600" } }}
               size="sm"
             >
               Follow on Github
