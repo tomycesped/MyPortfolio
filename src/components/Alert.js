@@ -45,7 +45,7 @@ function Alert() {
               icon={<FontAwesomeIcon icon={faTimes} />}
               size="md"
               variant="ghost"
-              colorScheme="gray"
+              color="black"
               onClick={onClose}
               _hover={{ color: "black", bg: "rgba(0, 0, 0, 0.1)" }}
             />

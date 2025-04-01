@@ -114,6 +114,7 @@ const Header = () => {
 
           {!isMobile ? (
             <HStack spacing={6}>
+              <ThemeToggle />
               <Box
                 as="button"
                 onClick={handleClick("contactme")}
@@ -144,7 +145,7 @@ const Header = () => {
                 </Box>
               </Box>
               
-              <ThemeToggle />
+              
               
               {socials.map((social, index) => (
                 <a
