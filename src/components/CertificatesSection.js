@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import FullScreenSection from "./FullScreenSection";
 import { css, keyframes } from "@emotion/react";
-import { Box, Heading, useBreakpointValue, List, ListItem, Text, Flex, Image, Button} from "@chakra-ui/react";
+import { Box, Heading, useBreakpointValue, List, ListItem, Text, Flex, Image, Button, useColorModeValue } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -55,6 +54,14 @@ const CertificatesSection = () => {
     lg: "4xl",
   });
 
+  const bgColor = useColorModeValue("gray.50", "gray.900");
+  const textColor = useColorModeValue("black", "white");
+  const cardBg = useColorModeValue("rgba(0, 0, 0, 0.68)", "gray.800");
+  const descriptionColor = useColorModeValue("gray.200", "gray.300");
+  const issuerColor = useColorModeValue("gray.400", "gray.500");
+  const radialBg = "radial-gradient(circle at 50% 50%, rgba(31, 210, 189, 0.82) 0%, transparent 40%)";
+  const underlineColor = useColorModeValue("rgba(31, 210, 189, 0.82)", "teal.300");
+
   const [expanded, setExpanded] = useState({});
 
   const toggleExpand = (index) => {
@@ -65,49 +72,40 @@ const CertificatesSection = () => {
   };
 
   return (
-    <Box 
-  bg="gray.50" 
-  _dark={{ bg: "gray.900" }}
-  w="100%"
->
-    <Box 
-      position="relative"
-      bg="gray.50"
-      p={{ base: 6, md: 12 }}
+    <Box bg={bgColor} w="100%">
+      <Box 
+        position="relative"
+        bg={bgColor}
+        p={{ base: 6, md: 12 }}
         alignItems="flex-start"
         spacing={8}
         maxW="1400px"
         mx="auto"
-      _dark={{ bg: "gray.900" }}
-    >
-      <Box
-        position="absolute"
-        top={0}
-        left={0}
-        right={0}
-        bottom={0}
-        bgImage="radial-gradient(circle at 50% 50%, rgba(31, 210, 189, 0.82) 0%, transparent 40%), 
-                radial-gradient(circle at 90% 70%, rgba(70, 129, 158, 0.02) 0%, transparent 50%)"
-        _dark={{
-          bgImage: "radial-gradient(circle at 80% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 50%)"
-        }}
-        pointerEvents="none"
-      />
+      >
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          bgImage={radialBg}
+          pointerEvents="none"
+        />
+        
         <Heading
           as="h1"
           id="certificates-section"
           fontFamily="'Outfit', sans-serif"
           fontSize={headingSize}
           fontWeight="600"
-          color="black"
+          color={textColor}
           textAlign={{ base: "center", md: "left" }}
-          _dark={{ color: "white" }}
           mb={8}
           width="100%"
           textDecoration="underline"
-  textDecorationColor="rgba(31, 210, 189, 0.82)"
-  textDecorationThickness="2px" 
-  textUnderlineOffset="4px"
+          textDecorationColor={underlineColor}
+          textDecorationThickness="2px" 
+          textUnderlineOffset="4px"
         >
           Certificates
         </Heading>
@@ -124,7 +122,6 @@ const CertificatesSection = () => {
               <Flex
                 borderLeft="4px solid"
                 borderColor="teal.300"
-                _dark={{ borderColor: "white", bg: "rgba(255, 255, 255, 0.1)" }}
                 pl={4}
                 _hover={{ 
                   transform: "translateX(10px)", 
@@ -133,7 +130,7 @@ const CertificatesSection = () => {
                 }}
                 alignItems="center"
                 justifyContent="space-between"
-                bg="rgba(0, 0, 0, 0.68)"
+                bg={cardBg}
                 borderRadius="12px"
                 boxShadow="md"
                 p={6}
@@ -146,15 +143,13 @@ const CertificatesSection = () => {
                     mb={2} 
                     fontWeight="600" 
                     color="white"
-                    _dark={{ color: "white" }}
                   >
                     {certificate.title}
                   </Heading>
                   <Text
                     fontSize="lg"
                     mb={2}
-                    color="gray.200"
-                    _dark={{ color: "gray.300" }}
+                    color={descriptionColor}
                     noOfLines={useBreakpointValue({ base: expanded[index] ? undefined : 2, md: undefined })}
                   >
                     {certificate.description}
@@ -162,8 +157,7 @@ const CertificatesSection = () => {
                   {useBreakpointValue({ base: !expanded[index], md: false }) && (
                     <Button
                       variant="link"
-                      color="gray.300"
-                      _dark={{ color: "gray.400" }}
+                      color={descriptionColor}
                       textDecoration="underline"
                       onClick={() => toggleExpand(index)}
                       _hover={{ color: "white" }}
@@ -171,7 +165,7 @@ const CertificatesSection = () => {
                       Read More...
                     </Button>
                   )}
-                  <Text fontSize="md" color="gray.400" _dark={{ color: "gray.500" }} mt={2}>
+                  <Text fontSize="md" color={issuerColor} mt={2}>
                     Issued by: {certificate.issuedBy} | Date: {certificate.date}
                   </Text>
                   {certificate.link && (
@@ -180,14 +174,14 @@ const CertificatesSection = () => {
                       href={certificate.link}
                       target="_blank"
                       variant="link"
-                      color="teal.300"
+                      color={underlineColor}
                       _hover={{ textDecoration: "underline" }}
                       mt={2}
                       display="inline-block"
                       textDecoration="underline"
-  textDecorationColor="teal.300"
-  textDecorationThickness="2px" 
-  textUnderlineOffset="3px"
+                      textDecorationColor={underlineColor}
+                      textDecorationThickness="2px" 
+                      textUnderlineOffset="3px"
                     >
                       View Certificate
                     </Button>
@@ -200,7 +194,6 @@ const CertificatesSection = () => {
                     boxSize="120px"
                     objectFit="contain"
                     filter="brightness(0) invert(1)"
-                    _dark={{ filter: "none" }}
                   />
                 </Box>
               </Flex>
@@ -213,8 +206,7 @@ const CertificatesSection = () => {
           fontFamily="'Outfit', sans-serif"
           fontSize="2xl"
           fontWeight="600"
-          color="black"
-          _dark={{ color: "white" }}
+          color={textColor}
           mt={8}
           justifySelf="center"
         >
@@ -225,15 +217,14 @@ const CertificatesSection = () => {
             target="_blank"
             fontSize="2xl"
             variant="link"
-            color="linkedin.500"
-            _dark={{ color: "linkedin.300" }}
+            color={useColorModeValue("linkedin.500", "linkedin.300")}
             _hover={{ textDecoration: "underline" }}
             rightIcon={<FontAwesomeIcon icon={faLinkedin} />}
           >
             Linkedin
           </Button>
         </Heading>
-    </Box>
+      </Box>
     </Box>
   );
 };

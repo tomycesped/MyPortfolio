@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
-import FullScreenSection from "./FullScreenSection";
-import { css, keyframes } from "@emotion/react";
-import { Box, Heading, Button, Flex, useBreakpointValue} from "@chakra-ui/react";
+import { keyframes } from "@emotion/react";
+import { Box, Heading, Button, Flex, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 import Card from "./Card";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./styles.css";
@@ -9,7 +8,7 @@ import "./styles.css";
 const projects = [
   {
     title: "Little Lemon Córdoba",
-    description: '"Little Lemon Córdoba" is a fictional restaurant website featuring a responsive landing page with online booking system, interactive menu display, photo gallery, and customer testimonials. The project showcases modern UI design with mobile-first approach and seamless dining experience across all devices.',
+    description: '"Little Lemon Córdoba" is a fictional restaurant website that features online bookings and an attractive landing page. It is designed to be responsive, combining modern aesthetics with seamless functionality for an excellent dining experience across all devices.',
     getImageSrc: () => require("../images/lemon.png"),
     link: "littlelemoncordoba.vercel.app",
     repoLink: "https://github.com/tomycesped/Little-Lemon-Cordoba",
@@ -50,6 +49,7 @@ const projects = [
   },
 ];
 
+
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -59,6 +59,14 @@ const ProjectsSection = () => {
   const [visibleProjects, setVisibleProjects] = useState(2);
   const projectsRef = useRef(null);
   const projectsPerLoad = useBreakpointValue({ base: 1, sm: 2 });
+
+  const bgColor = useColorModeValue("gray.50", "gray.900");
+  const textColor = useColorModeValue("black", "white");
+  const buttonBorder = useColorModeValue("black", "white");
+  const buttonHoverBg = useColorModeValue("black", "white");
+  const buttonHoverColor = useColorModeValue("white", "black");
+  const radialBgLight = "radial-gradient(circle at 50% 50%, rgba(225, 9, 9, 0.77) 0%, transparent 40%)";
+  const radialBgDark = "radial-gradient(circle at 50% 50%, rgba(225, 9, 9, 0.77) 0%, transparent 40%)";
 
   const gridColumns = useBreakpointValue({
     base: "1fr",
@@ -91,50 +99,41 @@ const ProjectsSection = () => {
   const showAllProjects = visibleProjects === projects.length;
 
   return (
-    <Box 
-      bg="gray.50" 
-      _dark={{ bg: "gray.900" }}
-        w="100%"
-        >
-    <Box
-      ref={projectsRef}
-       bg="gray.50" 
-       _dark={{ bg: "gray.900" }}
-       overflow="hidden"
-       position="relative"
-       p={{ base: 6, md: 12 }}
+    <Box bg={bgColor} w="100%">
+      <Box
+        ref={projectsRef}
+        bg={bgColor}
+        overflow="hidden"
+        position="relative"
+        p={{ base: 6, md: 12 }}
         alignItems="flex-start"
         spacing={8}
         maxW="1400px"
         mx="auto"
-       >
+      >
         <Box
-  position="absolute"
-  top={0}
-  left={0}
-  right={0}
-  bottom={0}
-  bgImage="radial-gradient(circle at 50% 50%, rgba(225, 9, 9, 0.77) 0%, transparent 40%), 
-          radial-gradient(circle at 50% 50%, rgba(249, 0, 0, 0.06) 0%, transparent 50%)"
-  _dark={{
-    bgImage: "radial-gradient(circle at 80% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 50%)"
-  }}
-  pointerEvents="none"
-/>
+          position="absolute"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          bgImage={useColorModeValue(radialBgLight, radialBgDark)}
+          pointerEvents="none"
+        />
+
         <Heading
           id="projects-section"
           as="h1"
           fontFamily="'Outfit', sans-serif"
           fontSize={headingSize}
-          color="black"
-          _dark={{ color: "white" }}
+          color={textColor}
           mb={8}
           textAlign={{ base: "center", md: "left" }}
           width="100%"
           textDecoration="underline"
-  textDecorationColor="red"
-  textDecorationThickness="2px" 
-  textUnderlineOffset="4px"
+          textDecorationColor="rgba(225, 9, 9, 0.77)"
+          textDecorationThickness="2px" 
+          textUnderlineOffset="4px"
         >
           Featured Projects
         </Heading>
@@ -178,13 +177,12 @@ const ProjectsSection = () => {
               boxShadow="lg"
               variant="outline"
               borderWidth="2px"
-              borderColor="black"
-              _dark={{ borderColor: "white", color: "white" }}
+              borderColor={buttonBorder}
+              color={textColor}
               borderRadius="full"
               _hover={{ 
-                bg: "black",
-                color: "white",
-                _dark: { bg: "white", color: "black" }
+                bg: buttonHoverBg,
+                color: buttonHoverColor
               }}
               px={8}
               py={6}
@@ -200,13 +198,12 @@ const ProjectsSection = () => {
               boxShadow="lg"
               variant="outline"
               borderWidth="2px"
-              borderColor="black"
-              _dark={{ borderColor: "white", color: "white" }}
+              borderColor={buttonBorder}
+              color={textColor}
               borderRadius="full"
               _hover={{ 
-                bg: "black",
-                color: "white",
-                _dark: { bg: "white", color: "black" }
+                bg: buttonHoverBg,
+                color: buttonHoverColor
               }}
               px={8}
               py={6}
@@ -216,7 +213,7 @@ const ProjectsSection = () => {
             </Button>
           )}
         </Flex>
-    </Box>
+      </Box>
     </Box>
   );
 };

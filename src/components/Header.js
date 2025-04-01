@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack, VStack, useBreakpointValue, IconButton, useDisclosure, Collapse } from "@chakra-ui/react";
+import { Box, HStack, VStack, useBreakpointValue, IconButton, useDisclosure, Collapse, useColorModeValue } from "@chakra-ui/react";
 import { faEnvelope, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import logoblanco from "../images/logoblanco.png";
+import { ThemeToggle } from "./ThemeToggle.js";
 
 const socials = [
   {
@@ -31,13 +32,21 @@ const Header = () => {
   const iconSize = useBreakpointValue({ 
     base: "lg",
     sm: "lg",   
-    md: "lg",  
-    lg: "lg",  
+    md: "xl",  
+    lg: "xl",  
   });
 
   const { isOpen, onToggle, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, md: false });
   const headerRef = useRef();
+
+  const headerBg = useColorModeValue("white", "gray.900");
+  const headerBorderColor = useColorModeValue("gray.200", "gray.700");
+  const logoFilter = useColorModeValue("invert(1)","none");
+  const buttonBg = useColorModeValue("black", "white");
+  const buttonColor = useColorModeValue("white", "black");
+  const buttonHoverBg = useColorModeValue("gray.800", "gray.200");
+  const mobileButtonBorder = useColorModeValue("black", "white");
 
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
@@ -80,17 +89,28 @@ const Header = () => {
       right={0}
       zIndex={10}
       ref={headerRef}
+      bg={headerBg}
+      borderBottomWidth="1px"
+      borderBottomRadius="lg"
+      borderBottomColor={headerBorderColor}
+      boxShadow={isOpen ? "0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2)" : "md"}
     >
-      <Box color="white" margin="0 auto">
+      <Box margin="0 auto">
         <HStack
           px={paddingX}
           py={2}
           justifyContent="space-between"
           alignItems="center"
-          backgroundColor="#0D0D0D"
           width="100%"
         >
-          <img src={logoblanco} alt="Logo" style={{ height: "40px" }} />
+          <img 
+            src={logoblanco} 
+            alt="Logo" 
+            style={{ 
+              height: "40px",
+              filter: logoFilter 
+            }} 
+          />
 
           {!isMobile ? (
             <HStack spacing={6}>
@@ -104,18 +124,18 @@ const Header = () => {
                 py={2}
                 borderRadius="md"
                 border="1px solid"
-                borderColor="gray.600"
-                color="gray.800"
-                bg="white"
+                borderColor="currentColor"
+                color={buttonColor}
+                bg={buttonBg}
                 transition="all 0.2s ease"
                 _hover={{
-                  bg: "whiteAlpha.800",
-                  borderColor: "gray.400",
+                  bg: buttonHoverBg,
+                  transform: "translateY(-1px)"
                 }}
                 style={{ fontFamily: "'Outfit', sans-serif" }}
                 _active={{
                   transform: "translateY(0)",
-                  bg: "whiteAlpha.700"
+                  bg: buttonHoverBg
                 }}
               >
                 Contact me
@@ -123,33 +143,44 @@ const Header = () => {
                   <FontAwesomeIcon icon={faEnvelope} size="sm" />
                 </Box>
               </Box>
+              
+              <ThemeToggle />
+              
               {socials.map((social, index) => (
                 <a
                   key={index}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  color={useColorModeValue("gray.800", "white")}
                 >
-                  <FontAwesomeIcon icon={social.icon} size={iconSize} />
+                  <FontAwesomeIcon 
+                    icon={social.icon} 
+                    size={iconSize} 
+                    color={useColorModeValue("black", "white")}
+                  />
                 </a>
               ))}
             </HStack>
           ) : (
-            <IconButton
-              icon={<FontAwesomeIcon icon={isOpen ? faTimes : faBars} />}
-              onClick={onToggle}
-              border="1px"
-              borderColor="white"
-              color="white"
-              _hover={{
-                color:"black",
-                bg:"white",
-                borderColor: "gray.400",
-                transform: "translateY(-1px)"
-              }}
-              variant="ghost"
-              aria-label="Toggle menu"
-            />
+            <HStack spacing={4}>
+              <ThemeToggle />
+              <IconButton
+                icon={<FontAwesomeIcon icon={isOpen ? faTimes : faBars} />}
+                onClick={onToggle}
+                border="1px"
+                borderColor={mobileButtonBorder}
+                color={useColorModeValue("black", "white")}
+                _hover={{
+                  color: useColorModeValue("white", "black"),
+                  bg: useColorModeValue("black", "white"),
+                  borderColor: "gray.400",
+                  transform: "translateY(-1px)"
+                }}
+                variant="ghost"
+                aria-label="Toggle menu"
+              />
+            </HStack>
           )}
         </HStack>
 
@@ -157,18 +188,16 @@ const Header = () => {
           <Box
             px={paddingX}
             pb={4}
-            backgroundColor="#0D0D0D"
+            bg={headerBg}
             borderBottomRadius="lg"
-            boxShadow="0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+            boxShadow="md"
+            borderBottomWidth="1px"
+            borderBottomColor={headerBorderColor}
           >
-            <VStack
-              spacing={4}
-              alignItems="center"
-            >
+            <VStack spacing={4} alignItems="center">
               <Box
                 as="button"
                 onClick={handleClick("contactme")}
-                href="/#contact-me"
                 display="inline-flex"
                 alignItems="center"
                 justifyContent="center"
@@ -176,13 +205,13 @@ const Header = () => {
                 py={2}
                 borderRadius="md"
                 border="1px solid"
-                borderColor="gray.600"
-                color="gray.800"
-                bg="white"
+                borderColor="currentColor"
+                color={buttonColor}
+                bg={buttonBg}
                 transition="all 0.2s ease"
                 _hover={{
-                  bg: "whiteAlpha.800",
-                  borderColor: "gray.400",
+                  bg: buttonHoverBg,
+                  transform: "translateY(-1px)"
                 }}
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
@@ -199,7 +228,11 @@ const Header = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FontAwesomeIcon icon={social.icon} size="xl" />
+                    <FontAwesomeIcon 
+                      icon={social.icon} 
+                      size="xl" 
+                      color={useColorModeValue("black", "white")}
+                    />
                   </a>
                 ))}
               </HStack>

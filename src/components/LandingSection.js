@@ -7,10 +7,11 @@ import {
   Flex, 
   Button, 
   HStack, 
-  Box
+  Box,
+  useColorModeValue
 } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
-import tom from "../images/tomi.jpg";
+import tom from "../images/tomi.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload, faProjectDiagram, faAward } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,7 +27,27 @@ const fadeInAnimation = keyframes`
 `;
 
 const LandingSection = () => {
+  const bgColor = useColorModeValue("gray.50", "gray.900");
+  const profileBorderColor = useColorModeValue("gray.300", "gray.600");
+  const profileShadow = useColorModeValue(
+    "0 4px 20px rgba(0, 0, 0, 0.1)",
+    "0 4px 20px rgba(0, 0, 0, 0.3)"
+  );
+  const secondaryBorderColor = useColorModeValue("gray.400", "gray.500");
+  const textColor = useColorModeValue("gray.600", "gray.300");
+  const titleColor = useColorModeValue("gray.800", "white");
+  const subtitleColor = useColorModeValue("gray.600", "gray.400");
+  const buttonBg = useColorModeValue("gray.800", "gray.700");
+  const buttonHoverBg = useColorModeValue("gray.700", "gray.600");
+  const outlineButtonBorder = useColorModeValue("gray.800", "gray.400");
+  const outlineButtonColor = useColorModeValue("gray.800", "gray.200");
   
+  const bgGradientLight = "linear(to-r, #3B82F6, #10B981, rgb(243, 235, 24))";
+  const bgGradientDark = "linear(to-r, #A78BFA, #F472B6)";
+  
+  const radialBgLight = "radial-gradient(circle at 20% 30%, rgba(10, 25, 156, 0.36) 0%, transparent 30%), radial-gradient(circle at 80% 60%, rgba(17, 35, 199, 0.27) 0%, transparent 20%)";
+  const radialBgDark = "radial-gradient(circle at 20% 30%, rgba(49, 90, 214, 0.53) 0%, transparent 30%), radial-gradient(circle at 80% 60%, rgba(43, 89, 227, 0.35) 0%, transparent 20%)";
+
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -39,23 +60,23 @@ const LandingSection = () => {
         top: offsetPosition,
         behavior: "smooth"
       });
-    }}
+    }
+  };
 
   const pulse = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-`;
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  `;
 
   return (
     <FullScreenSection
       width="100%"
       justifyContent="center"
       alignItems="center"
-      bg="gray.50"
+      bg={bgColor}
       position="relative"
       overflow="hidden"
-      _dark={{ bg: "gray.900" }}
     >
       <Box
         position="absolute"
@@ -63,11 +84,7 @@ const LandingSection = () => {
         left={0}
         right={0}
         bottom={0}
-        bgImage="radial-gradient(circle at 20% 30%, rgba(10, 25, 156, 0.36) 0%, transparent 30%), 
-                radial-gradient(circle at 80% 60%, rgba(17, 35, 199, 0.27) 0%, transparent 20%)"
-        _dark={{
-          bgImage: "radial-gradient(circle at 20% 30%, rgba(100, 100, 100, 0.1) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(75, 75, 75, 0.1) 0%, transparent 30%)"
-        }}
+        bgImage={useColorModeValue(radialBgLight, radialBgDark)}
         pointerEvents="none"
       />
 
@@ -97,9 +114,8 @@ const LandingSection = () => {
             objectFit="cover"
             borderRadius="full"
             border="4px solid"
-            borderColor="gray.300"
-            _dark={{ borderColor: "gray.600", boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)"  }}
-            boxShadow="0 4px 20px rgba(0, 0, 0, 0.1)"
+            borderColor={profileBorderColor}
+            boxShadow={profileShadow}
             src={tom}
             alt="Profile"
           />
@@ -108,10 +124,8 @@ const LandingSection = () => {
             inset={0}
             borderRadius="full"
             border="2px"
-            borderColor="gray.400"
-            _dark={{ borderColor: "gray.500" }}
+            borderColor={secondaryBorderColor}
             opacity={0.6}
-            transform="rotate(5deg)"
           />
         </Box>
         <VStack 
@@ -131,8 +145,7 @@ const LandingSection = () => {
         >
           <Text
             fontSize={{ base: "xl", md: "2xl" }}
-            color="gray.600"
-            _dark={{ color: "gray.300" }}
+            color={textColor}
             fontWeight="semibold"
             letterSpacing="1px"
           >
@@ -140,35 +153,31 @@ const LandingSection = () => {
           </Text>
 
           <Text
-  fontSize={{ base: "3xl", md: "5xl" }}
-  fontWeight="extrabold"
-  lineHeight="1.1"
-  color="gray.800"
-  _dark={{ color: "white" }}
->
-  A{' '}
-  <Box 
-  as="span"
-  display="inline-block"
-  bgGradient="linear(to-r, #3B82F6, #10B981,rgb(243, 235, 24))"
-  bgClip="text"
-  _dark={{ bgGradient: "linear(to-r, #A78BFA, #F472B6)" }}
-  css={{
-    animation: `${pulse} 5s ease infinite`,
-    backgroundSize: '200% 200%'
-  }}
->
-  frontend developer&nbsp;
-</Box>
-
-  <Box as="br" display={{ base: "none", md: "block" }} />
-  specialized in React
-</Text>
+            fontSize={{ base: "3xl", md: "5xl" }}
+            fontWeight="extrabold"
+            lineHeight="1.1"
+            color={titleColor}
+          >
+            A{' '}
+            <Box 
+              as="span"
+              display="inline-block"
+              bgGradient={useColorModeValue(bgGradientLight, bgGradientDark)}
+              bgClip="text"
+              css={{
+                animation: `${pulse} 5s ease infinite`,
+                backgroundSize: '200% 200%'
+              }}
+            >
+              frontend developer&nbsp;
+            </Box>
+            <Box as="br" display={{ base: "none", md: "block" }} />
+            specialized in React
+          </Text>
 
           <Text
             fontSize={{ base: "md", md: "lg" }}
-            color="gray.600"
-            _dark={{ color: "gray.400" }}
+            color={subtitleColor}
             maxW={{ md: "90%" }}
           >
             I create modern web experiences with intuitive interfaces and efficient code.
@@ -181,16 +190,12 @@ const LandingSection = () => {
               download
               leftIcon={<FontAwesomeIcon icon={faFileDownload} />}
               size="lg"
-              bg="gray.800"
+              bg={buttonBg}
               borderRadius="full"
               color="white"
               _hover={{ 
-                bg: "gray.700",
+                bg: buttonHoverBg,
                 transform: "translateY(-2px)" 
-              }}
-              _dark={{
-                bg: "gray.700",
-                _hover: { bg: "gray.600" }
               }}
               transition="all 0.2s"
             >
@@ -202,19 +207,14 @@ const LandingSection = () => {
               leftIcon={<FontAwesomeIcon icon={faProjectDiagram} />}
               size="lg"
               variant="outline"
-              bg="white"
-              borderColor="gray.800"
+              bg={useColorModeValue("white", "transparent")}
+              borderColor={outlineButtonBorder}
               borderRadius="full"
-              color="gray.800"
+              color={outlineButtonColor}
               _hover={{ 
-                bg: "gray.800",
+                bg: useColorModeValue("gray.800", "gray.800"),
                 color: "white",
                 transform: "translateY(-2px)" 
-              }}
-              _dark={{
-                borderColor: "gray.400",
-                color: "gray.200",
-                _hover: { bg: "gray.800" }
               }}
               transition="all 0.2s"
             >
@@ -226,19 +226,14 @@ const LandingSection = () => {
               leftIcon={<FontAwesomeIcon icon={faAward} />}
               size="lg"
               variant="outline"
-              borderColor="gray.800"
-              color="gray.800"
-              bg="white"
+              borderColor={outlineButtonBorder}
+              color={outlineButtonColor}
+              bg={useColorModeValue("white", "transparent")}
               borderRadius="full"
               _hover={{ 
-                bg: "gray.800",
+                bg: useColorModeValue("gray.800", "gray.800"),
                 color: "white",
                 transform: "translateY(-2px)" 
-              }}
-              _dark={{
-                borderColor: "gray.400",
-                color: "gray.200",
-                _hover: { bg: "gray.800" }
               }}
               transition="all 0.2s"
             >
