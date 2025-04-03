@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 import tom from "../images/tomi.png";
-import iguanabien from "../images/logo3d.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload, faProjectDiagram, faAward } from "@fortawesome/free-solid-svg-icons";
 
