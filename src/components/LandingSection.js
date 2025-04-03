@@ -80,6 +80,7 @@ const LandingSection = () => {
     >
       <Box
         position="absolute"
+        id="home-section"
         top={0}
         left={0}
         right={0}
@@ -207,7 +208,7 @@ const LandingSection = () => {
               leftIcon={<FontAwesomeIcon icon={faProjectDiagram} />}
               size="lg"
               variant="outline"
-              bg={useColorModeValue("white", "transparent")}
+              bg={useColorModeValue("white", "gray.900")}
               borderColor={outlineButtonBorder}
               borderRadius="full"
               color={outlineButtonColor}
@@ -228,7 +229,7 @@ const LandingSection = () => {
               variant="outline"
               borderColor={outlineButtonBorder}
               color={outlineButtonColor}
-              bg={useColorModeValue("white", "transparent")}
+              bg={useColorModeValue("white", "gray.900")}
               borderRadius="full"
               _hover={{ 
                 bg: useColorModeValue("gray.800", "gray.800"),

@@ -9,6 +9,21 @@ const Footer = () => {
   const textColor = useColorModeValue("black", "white");
   const logoFilter = useColorModeValue("invert(1)","none");
 
+  const handleClick = (anchor) => () => {
+    const id = `${anchor}-section`;
+    const element = document.getElementById(id);
+    if (element) {
+      const headerHeight = 72;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   const handleTextClick = () => {
     setIsClicked(true);
     setTimeout(() => {
@@ -34,8 +49,10 @@ const Footer = () => {
         >
           <img 
             src={logoblanco} 
+            onClick={handleClick("home")}
             alt="Logo" 
             style={{ 
+              cursor:"pointer",
               height: "35px", 
               marginTop: "3px",
               filter: logoFilter 

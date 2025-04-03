@@ -12,7 +12,7 @@ export const ThemeToggle = () => {
       onToggle={toggleColorMode}
       duration={750}
       style={{
-        fontSize: "1.5rem",
+        fontSize: "1.9rem",
         color: toggleColor,
         backgroundColor: "transparent",
         border: "none",

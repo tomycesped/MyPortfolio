@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack, VStack, useBreakpointValue, IconButton, useDisclosure, Collapse, useColorModeValue } from "@chakra-ui/react";
+import { Box, HStack, VStack, IconButton, useDisclosure, Collapse, useColorModeValue } from "@chakra-ui/react";
 import { faEnvelope, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import logoblanco from "../images/logoblanco.png";
 import { ThemeToggle } from "./ThemeToggle.js";
@@ -22,22 +22,7 @@ const socials = [
 ];
 
 const Header = () => {
-  const paddingX = useBreakpointValue({ 
-    base: 4, 
-    sm: 6,  
-    md: 8, 
-    lg: 12,  
-  });
-
-  const iconSize = useBreakpointValue({ 
-    base: "lg",
-    sm: "lg",   
-    md: "xl",  
-    lg: "xl",  
-  });
-
   const { isOpen, onToggle, onClose } = useDisclosure();
-  const isMobile = useBreakpointValue({ base: true, md: false });
   const headerRef = useRef();
 
   const headerBg = useColorModeValue("white", "gray.900");
@@ -60,11 +45,9 @@ const Header = () => {
         top: offsetPosition,
         behavior: "smooth"
       });
-      if (isMobile) {
-        setTimeout(() => {
-          onClose();
-        }, 800); 
-      }
+      setTimeout(() => {
+        onClose();
+      }, 800);
     }
   };
 
@@ -95,9 +78,9 @@ const Header = () => {
       borderBottomColor={headerBorderColor}
       boxShadow={isOpen ? "0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2)" : "md"}
     >
-      <Box margin="0 auto">
+      <Box margin="0 auto" >
         <HStack
-          px={paddingX}
+          px={6}
           py={2}
           justifyContent="space-between"
           alignItems="center"
@@ -112,82 +95,29 @@ const Header = () => {
             }} 
           />
 
-          {!isMobile ? (
-            <HStack spacing={6}>
-              <ThemeToggle />
-              <Box
-                as="button"
-                onClick={handleClick("contactme")}
-                display="inline-flex"
-                alignItems="center"
-                justifyContent="center"
-                px={4}
-                py={2}
-                borderRadius="md"
-                border="1px solid"
-                borderColor="currentColor"
-                color={buttonColor}
-                bg={buttonBg}
-                transition="all 0.2s ease"
-                _hover={{
-                  bg: buttonHoverBg,
-                  transform: "translateY(-1px)"
-                }}
-                style={{ fontFamily: "'Outfit', sans-serif" }}
-                _active={{
-                  transform: "translateY(0)",
-                  bg: buttonHoverBg
-                }}
-              >
-                Contact me
-                <Box as="span" ml={2}>
-                  <FontAwesomeIcon icon={faEnvelope} size="sm" />
-                </Box>
-              </Box>
-              
-              
-              
-              {socials.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  color={useColorModeValue("gray.800", "white")}
-                >
-                  <FontAwesomeIcon 
-                    icon={social.icon} 
-                    size={iconSize} 
-                    color={useColorModeValue("black", "white")}
-                  />
-                </a>
-              ))}
-            </HStack>
-          ) : (
-            <HStack spacing={4}>
-              <ThemeToggle />
-              <IconButton
-                icon={<FontAwesomeIcon icon={isOpen ? faTimes : faBars} />}
-                onClick={onToggle}
-                border="1px"
-                borderColor={mobileButtonBorder}
-                color={useColorModeValue("black", "white")}
-                _hover={{
-                  color: useColorModeValue("white", "black"),
-                  bg: useColorModeValue("black", "white"),
-                  borderColor: "gray.400",
-                  transform: "translateY(-1px)"
-                }}
-                variant="ghost"
-                aria-label="Toggle menu"
-              />
-            </HStack>
-          )}
+          <HStack spacing={4}>
+            <ThemeToggle />
+            <IconButton
+              icon={<FontAwesomeIcon icon={isOpen ? faTimes : faBars} />}
+              onClick={onToggle}
+              border="1px"
+              borderColor={mobileButtonBorder}
+              color={useColorModeValue("black", "white")}
+              _hover={{
+                color: useColorModeValue("white", "black"),
+                bg: useColorModeValue("black", "white"),
+                borderColor: "gray.400",
+                transform: "translateY(-1px)"
+              }}
+              variant="ghost"
+              aria-label="Toggle menu"
+            />
+          </HStack>
         </HStack>
 
-        <Collapse in={isMobile && isOpen} animateOpacity>
+        <Collapse in={isOpen} animateOpacity>
           <Box
-            px={paddingX}
+            px={6}
             pb={4}
             bg={headerBg}
             borderBottomRadius="lg"
