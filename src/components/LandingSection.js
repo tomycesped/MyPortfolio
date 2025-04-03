@@ -8,12 +8,10 @@ import {
   Button, 
   HStack, 
   Box,
-  useColorModeValue,
-  useBreakpointValue
+  useColorModeValue
 } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 import tom from "../images/tomi.png";
-import iguana from "../images/dadovuelta.png"
 import iguanabien from "../images/logo3d.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload, faProjectDiagram, faAward } from "@fortawesome/free-solid-svg-icons";
@@ -71,9 +69,6 @@ const LandingSection = () => {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   `;
-
-  const showIguana = useBreakpointValue({ base: false, md: true });
-
   return (
     <FullScreenSection
       width="100%"
@@ -83,37 +78,6 @@ const LandingSection = () => {
       position="relative"
       overflow="hidden"
     >
-      {showIguana && (
-        <Box
-          position="absolute"
-          bottom="-22px"
-          left="0"
-          width={{ md: "200px", lg: "200px", xl: "200px" }}
-          height="auto"
-          opacity={0.1}
-          zIndex={0}
-          transform="rotate(220deg)"
-        >
-          <Image src={iguana} alt="Iguana 3D" width="100%" height="100%" />
-        </Box>
-        
-      )}
-            {showIguana && (
-        <Box
-          position="absolute"
-          top="22px"
-          right="0"
-          width={{ md: "200px", lg: "200px", xl: "200px" }}
-          height="auto"
-          opacity={0.1}
-          zIndex={0}
-          transform="rotate(205deg)"
-        >
-          <Image src={iguanabien} alt="Iguana 3D" width="100%" height="100%" />
-        </Box>
-        
-      )}
-      
       <Box
         position="absolute"
         id="home-section"

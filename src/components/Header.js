@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack, VStack, IconButton, useDisclosure, Collapse, useColorModeValue } from "@chakra-ui/react";
+import { Box, HStack, VStack, IconButton, useDisclosure, Collapse, useColorModeValue, useBreakpointValue, Image } from "@chakra-ui/react";
+import iguanabien from "../images/logo3d.png";
 import { faEnvelope, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import logoblanco from "../images/logoblanco.png";
 import { ThemeToggle } from "./ThemeToggle.js";
@@ -32,6 +33,7 @@ const Header = () => {
   const buttonColor = useColorModeValue("white", "black");
   const buttonHoverBg = useColorModeValue("gray.800", "gray.200");
   const mobileButtonBorder = useColorModeValue("black", "white");
+    const iguanaColor = useColorModeValue("0.1", "0.03");
 
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
@@ -64,6 +66,8 @@ const Header = () => {
     };
   }, [isOpen, onClose]);
 
+    const showIguana = useBreakpointValue({ base: false, md: true });
+
   return (
     <Box
       position="fixed"
@@ -85,10 +89,12 @@ const Header = () => {
           justifyContent="space-between"
           alignItems="center"
           width="100%"
+          zIndex={2}
         >
           <img 
             src={logoblanco} 
             alt="Logo" 
+            zIndex={2}
             style={{ 
               height: "40px",
               filter: logoFilter 
@@ -101,6 +107,7 @@ const Header = () => {
               icon={<FontAwesomeIcon icon={isOpen ? faTimes : faBars} />}
               onClick={onToggle}
               border="1px"
+              zIndex={2}
               borderColor={mobileButtonBorder}
               color={useColorModeValue("black", "white")}
               _hover={{
@@ -116,6 +123,20 @@ const Header = () => {
         </HStack>
 
         <Collapse in={isOpen} animateOpacity>
+                    {showIguana && (
+                <Box
+                  position="absolute"
+                  top="10px"
+                  right="10%"
+                  width={{ md: "150px", lg: "150px", xl: "150px" }}
+                  height="auto"
+                  opacity={iguanaColor}
+                  zIndex={0}
+                  transform="rotate(240deg)"
+                >
+                  <Image src={iguanabien} alt="Iguana 3D" width="100%" height="100%" />
+                </Box>               
+              )}             
           <Box
             px={6}
             pb={4}
