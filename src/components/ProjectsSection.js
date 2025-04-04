@@ -10,7 +10,7 @@ const projects = [
     title: "Little Lemon Córdoba",
     description: '"Little Lemon Córdoba" is a fictional restaurant website that features online bookings and an attractive landing page. It is designed to be responsive, combining modern aesthetics with seamless functionality for an excellent dining experience across all devices.',
     getImageSrc: () => require("../images/lemon.png"),
-    link: "littlelemoncordoba.vercel.app",
+    link: "https://littlelemoncordoba.vercel.app",
     repoLink: "https://github.com/tomycesped/Little-Lemon-Cordoba",
   },
   {
